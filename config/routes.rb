@@ -14,7 +14,8 @@ devise_for :members, controllers: {
 }
 
 namespace :members do
-    resources :cart_products,only: [:index,:edit,:update,:destroy,:destroy_all,:create]
+    resources :members,only: [:index,:edit,:update,:show]
+    resources :cart_products,only: [:index,:edit,:update,:destroy,:create]
     resources :destinations ,only: [:show,:index,:edit,:update,:create]
   		resources :products ,only: [:show,:index]
   		resources :orders ,only: [:new,:create,:index,:show]do
@@ -24,6 +25,7 @@ namespace :members do
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
   get 'orders/confirm' => 'orders#confirm'
   get 'orders/finish' => 'orders#finish'
+  patch 'members/change' => 'member#change'
 
  namespace :admins do
   		resources :products
@@ -34,7 +36,7 @@ namespace :members do
   			patch :toggle_status
   		end
   		resources :members,only: [:show,:index,:edit,:update]
-  		resources :genre,only: [:create,:index,:edit,:update]
+  		resources :genres,only: [:create,:index,:edit,:update]
  end
   root 'homes#top'
   get 'admin/homes' => 'homes#top'
