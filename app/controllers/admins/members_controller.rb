@@ -1,6 +1,6 @@
-class Admins::membersController < Admin::Base
+class Admins::MembersController < Admins::BaseController
 	def index
-		@menber = Members.all
+		@menbers = Member.all
 	end
 
 	def show
