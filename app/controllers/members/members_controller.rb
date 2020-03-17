@@ -1,2 +1,2 @@
-class MembersController < member::Base
+class Members::MembersController < Members::BaseController
 end

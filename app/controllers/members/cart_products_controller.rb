@@ -1,2 +1,2 @@
-class CartProductsController < member::Base
+class Menbers::CartProductsController < Members::BaseController
 end
