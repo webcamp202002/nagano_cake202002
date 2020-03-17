@@ -6,7 +6,6 @@ ja:
         wait_create: 制作待ち
         create: 製作中
         finish: 制作完
-
   enums:
     order:
       order_status:
@@ -15,15 +14,11 @@ ja:
         create: 製作中
         preparation: 配送準備中
         finish: 配送完了
-
+      payment_method:
+        card: 販売中
+        bank: 売り切れ
   enums:
     product:
       sale_status:
         sale: 販売中
-        sold_out:　売り切れ
-
-  enums:
-    order:
-      payment_method:
-        card: 販売中
-        bank:　売り切れ
+        sold_out: 売り切れ
