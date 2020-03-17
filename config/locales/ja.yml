@@ -1,0 +1,29 @@
+ja:
+  enums:
+    order_product:
+      status:
+        not_create: 着手不可
+        wait_create: 制作待ち
+        create: 製作中
+        finish: 制作完
+
+  enums:
+    order:
+      order_status:
+        wait: 入金待ち
+        confirm: 入金確認中
+        create: 製作中
+        preparation: 配送準備中
+        finish: 配送完了
+
+  enums:
+    product:
+      product_status:
+        sale: 販売中
+        sold_out:　売り切れ
+
+  enums:
+    order:
+      payment_method:
+        card: 販売中
+        bank:　売り切れ
