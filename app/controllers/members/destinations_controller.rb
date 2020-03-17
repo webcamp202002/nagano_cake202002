@@ -1,2 +1,2 @@
-class DestinationsController < member::Base
+class Members::DestinationsController < Members::BaseController
 end
