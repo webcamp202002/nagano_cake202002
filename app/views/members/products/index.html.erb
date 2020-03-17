@@ -1,2 +1,12 @@
-<h2><<strong>商品一覧</strong></h2>
-<% @products.each do |product| %>
+<div class="row">
+	<h2><strong>商品一覧</strong></h2>
+	
+			<% @products.each do |product| %>
+					<div class="col-xs-3 each_item">
+						<%= link_to members_product_path(product) do %>
+						  <%= attachment_image_tag product, :image, style:"width:100%; bottom: 45px;" %>
+						<% end %>
+						<%= product.name %>
+						<%= product.price %>¥<br>
+					</div>
+			<% end %>

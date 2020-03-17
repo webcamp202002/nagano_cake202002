@@ -1,0 +1,4 @@
+<%= attachment_image_tag product, :image, style:"width:100%; bottom: 45px;" %><h3><%= @product.name %></h3>
+<p><%= @product.introduction%></p>
+<p>￥
+<%= (@product.price * 1.1).round %>(税込み)</p>
