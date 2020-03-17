@@ -6,4 +6,13 @@ class Member < ApplicationRecord
 
          has_many :cart_products
          has_many :orders
+
+         validates :status, inclusion: {in: [true, false]}
+         validate :last_name, presence: true
+         validate :first_name, presence: true
+         validate :kana_last_name, presence: true
+         validate :kana_first_name, presence: true
+         validate :postcode, presence: true
+         validate :adress, presence: true
+         validate :phone_number, presence: true
 end
