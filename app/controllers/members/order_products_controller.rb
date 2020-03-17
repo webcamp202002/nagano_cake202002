@@ -1,2 +1,2 @@
-class OrderProductsController < ApplicationController
+class OrderProductsController < member::Base
 end
