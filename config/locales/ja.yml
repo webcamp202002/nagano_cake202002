@@ -18,7 +18,7 @@ ja:
 
   enums:
     product:
-      product_status:
+      sale_status:
         sale: 販売中
         sold_out:　売り切れ
 
