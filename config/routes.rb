@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'homes/top'
+  end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -24,15 +27,16 @@ namespace :members do
 
  namespace :admins do
   		resources :products
-  		resources :order_products,only: [:update] do
+  		resource :order_products,only: [:update] do
   			patch :toggle_status
   		end
   		resources :orders,only: [:show,:index,:update] do
   			patch :toggle_status
   		end
-  		resources :user,only: [:show,:index,:edit,:update]
+  		resources :members,only: [:show,:index,:edit,:update]
   		resources :genre,only: [:create,:index,:edit,:update]
  end
   root 'homes#top'
+  get 'admin/homes' => 'homes#top'
 
 end
