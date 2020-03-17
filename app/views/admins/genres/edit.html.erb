@@ -1,0 +1,21 @@
+<div>
+	<div>
+		<hi>ジャンル編集画面</hi>
+		<p>ジャンル</p>
+		<div>
+			<%= form_for(@genre) do |f| %>
+			<p>ジャンル
+				<%= f.label :name %>
+				<%= f.text_field :name%>
+			</p>
+			<label>
+				<%= f.radio_button :status, true %>有効
+			</label>
+			<label>
+				<%= f.radio_button :status, false %>無効
+			</label>
+			<%= f.submit %>
+			<% end %>
+		</div>
+	</div>
+</div>
