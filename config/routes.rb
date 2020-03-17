@@ -1,20 +1,14 @@
 Rails.application.routes.draw do
-devise_for :admins, skip: :all
-  devise_scope :admin do
-    get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
-    post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
-    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
-  end
-
-  devise_for :members, skip: :all
-  devise_scope :member do
-    get 'members/sign_in' => 'members/sessions#new', as: 'new_member_session'
-    post 'members/sign_in' => 'members/sessions#create', as: 'member_session'
-    delete 'members/sign_out' => 'members/sessions#destroy', as: 'destroy_member_session'
-    get 'members/sign_up' => 'members/registrations#new', as: 'new_member_registration'
-    post 'members' => 'members/registrations#create', as: 'member_registration'
-    get 'members/password/new' => 'members/passwords#new', as: 'new_member_password'
-  end
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
+devise_for :members, controllers: {
+  sessions:      'members/sessions',
+  passwords:     'members/passwords',
+  registrations: 'members/registrations'
+}
 
 namespace :members do
     resources :cart_products,only: [:index,:edit,:update,:destroy,:destroy_all,:create]
