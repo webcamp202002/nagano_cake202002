@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>namespace - admin</title>
+    <title>namespace - member</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,7 +17,7 @@
           <nav>
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
-            <% if admin_signed_in? %>
+            <% if member_signed_in? %>
             <li><%= link_to 'マイページ', members_member_path %></li>
             <li><%= link_to '商品一覧',
             members_products_path %></li>
