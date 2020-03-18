@@ -1,1 +1,20 @@
 <p>会員一覧</p>
+<table>
+	<tr>
+		<th>会員ID</th>
+		<th>氏名</th>
+		<th>メールアドレス</th>
+		<th>ステータス</th>
+	</tr>
+	<%if @members.presents? %>
+	<% @members.each do |member| %>
+	<tr>
+		<td><%= @member.id %></td>
+		<td><%= @member.first_name %><%= @member.last_name %></td>
+		<td><%= @member.email %></td>
+		<td><%= @member.is_withdrow_i18n %></td>
+	</tr>
+	<% end %>
+	<% end %>
+
+</table>
