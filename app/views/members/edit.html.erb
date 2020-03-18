@@ -1,7 +1,7 @@
 <div class=“edit-container” style=“width:50%; margin: 20px auto; position: relative;“>
   <h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>会員情報編集</h4>
 <%= form_for(@member, url:member_path(@member), method: :patch) do |f| %>
-       <%= link_to leave_member_path(@member), method: :patch, data: { confirm: ‘本当に退会しますか？’ } do %>
+       <%= link_to destroy_member_path(@member), method: :patch, data: { confirm: ‘本当に退会しますか？’ } do %>
               <span class=“btn btn-danger” style=“position: absolute; top: 30px; right: 50px;“>退会する</span>
        <% end %>
     <div class=“row” style=“height: 20px;“></div>
