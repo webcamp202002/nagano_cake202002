@@ -4,31 +4,31 @@
 		<tbody>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>名前</th>
-				<td><%= @member.last_name %> <%= @member.first_name %></td>
+				<td><%= current_member.last_name %> <%= current_member.first_name %></td>
 			</tr>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>フリガナ</th>
-				<td><%= @member.kana_last_name %> <%= @member.kana_last_name %></td>
+				<td><%= current_member.kana_last_name %> <%= current_member.kana_last_name %></td>
 			</tr>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>郵便番号</th>
-				<td>〒 <%= @member.postcode %></td>
+				<td>〒 <%= current_member.postcode %></td>
 			</tr>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>住所</th>
-				<td><%= @member.address %></td>
+				<td><%= current_member.address %></td>
 			</tr>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>電話番号</th>
-				<td><%= @member.phone_number %></td>
+				<td><%= current_member.phone_number %></td>
 			</tr>
 			<tr>
 				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>メールアドレス</th>
-				<td style=“border-bottom: 1px solid #DAD7D7;“><%= @member.email %></td>
+				<td style=“border-bottom: 1px solid #DAD7D7;“><%= current_member.email %></td>
 			</tr>
 		</tbody>
 	</table>
-	<%= link_to ‘登録情報を編集する‘, edit_member_path(@member), class:“btn btn-info” %>
+	<%= link_to ‘登録情報を編集する‘, edit_member_path(current_member), class:“btn btn-info” %>
 	<%= link_to ‘パスワードを編集する’, edit_member_registration_path, class:“btn btn-success” %>
 	<hr>
 	<h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>配送先</h4>
@@ -37,7 +37,7 @@
 		<% end %>
 	<hr>
 	<h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>注文履歴</h4>
-		<%= link_to orders_path(id: @member.id) do %>
+		<%= link_to orders_path(id: current_member.id) do %>
 			一覧を見る<span class=“glyphicon glyphicon-chevron-right”></span>
 		<% end %>
 	<hr>
