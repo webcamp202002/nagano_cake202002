@@ -8,26 +8,25 @@
   </head>
 <body>
 
-	 <header class="navbar navbar-inverse  navbar-fixed-top　navbar-inverse">
+	 <header class="navbar navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <div class= "navbar-header w-100 nav-justified">
-          <h2 class="navbar-brand navbar-right">NAGANO CAKE</h2>
+          <em><h2 class="navbar-brand navbar-right">NAGANO CAKE</h2><em>
         </nav>
           <nav>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav nav-tabs">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if member_signed_in? %>
 
-            <li><%= link_to 'マイページ', members_member_path(current_member) %></li>
-            <li><%= link_to '商品一覧',
-            members_products_path %></li>
-            <li><%= link_to 'カート', members_cart_product_path(current_member) %></li>
-            <li><%= link_to 'ログアウト', destroy_member_session_path %></li>
+            <li><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
+            <li><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
+            <li><%= link_to 'カート', members_cart_product_path(current_member), class: "nav-link disabled" %></li>
+            <li><%= link_to 'ログアウト', destroy_member_session_path, class: "nav-link disabled" %></li>
             <% else %>
-            <li><%= link_to '商品一覧', members_products_path %></li>
-            <li><%= link_to '新規登録', new_member_registration_path %></li>
-            <li><%= link_to 'ログイン', new_member_session_path %></li>
+            <li><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
+            <li><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>
+            <li><%= link_to 'ログイン', new_member_session_path, class: "nav-link disabled" %></li>
             <% end %>
           </ul>
         </div>
