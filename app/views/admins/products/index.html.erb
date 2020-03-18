@@ -1,1 +1,23 @@
+<div>
 <p>商品一覧</p>
+<table>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜き価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+		<%if @products.present? %>
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= @product.id %></td>
+			<td><%= @product.name %></td>
+			<td><%= @product_unit_price %></td>
+			<td><%= @product.genre %></td>
+			<td><%= @product.status %></td>
+		</tr>
+		<% end %>
+		<% end %>
+	</table>
+</div>

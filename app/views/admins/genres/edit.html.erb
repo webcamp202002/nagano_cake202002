@@ -3,16 +3,18 @@
 		<hi>ジャンル編集画面</hi>
 		<p>ジャンル</p>
 		<div>
-			<%= form_for(@genre) do |f| %>
+			<%= form_with(model: genre, local: true) do |form| %>
 			<p>ジャンル
 				<%= f.label :name %>
 				<%= f.text_field :name%>
 			</p>
 			<label>
-				<%= f.radio_button :status, true %>有効
+				<%= f.radio_button :status, true %>
+				<%= form.label :status, "有効", {value: :true, style: "display: inline-block;"} %>
 			</label>
 			<label>
-				<%= f.radio_button :status, false %>無効
+				<%= f.radio_button :status, false %>
+				<%= form.label :status, "無効", {value: :false, style: "display: inline-block;"} %>
 			</label>
 			<%= f.submit %>
 			<% end %>
