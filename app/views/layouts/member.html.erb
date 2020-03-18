@@ -12,12 +12,13 @@
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <div class= "navbar-header w-100 nav-justified">
-          <h2 class="navbar-brand navbar-left">NAGANO CAKE</h2>
+          <h2 class="navbar-brand navbar-right">NAGANO CAKE</h2>
         </nav>
           <nav>
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if member_signed_in? %>
+
             <li><%= link_to 'マイページ', members_member_path(current_member) %></li>
             <li><%= link_to '商品一覧',
             members_products_path %></li>
