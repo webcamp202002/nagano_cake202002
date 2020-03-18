@@ -11,8 +11,39 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require_tree ../../../app/assets/stylesheets/.
  *= require_self
  */
 @import "bootstrap";
+
+
+.image1 {
+background-image: url(image10.jpg);
+background-size: cover;
+background-position: center;
+}
+.image2 {
+background-image: url(topimage2.jpg);
+background-size: cover;
+background-position: center;
+}
+.image3 {
+background-image: url(topimage3.jpg);
+background-size: cover;
+background-position: center;
+}
+.image4 {
+background-image: url(topimage4.jpg);
+background-size: cover;
+background-position: center;
+}
+
+#container{
+  height: 300px;
+  width: 100%;
+  padding-right: 70px;
+  padding-left: 70px;
+}
+
 
 
