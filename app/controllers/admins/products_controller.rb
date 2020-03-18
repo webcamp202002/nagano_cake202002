@@ -1,6 +1,6 @@
 class Admins::ProductsController < Admins::BaseController
 	def index
-		@products = Products.all
+		@products = Product.all
 	end
 	def show
 		@product = Product.find(params[:id])
@@ -10,8 +10,9 @@ class Admins::ProductsController < Admins::BaseController
 	end
 	def create
 		@product = Product.new
-		if @product.save
-			
+		@product.save
+		redirect_to admins_product_path(@product)
+
 	end
 	def edit
 		@product = Product.find(params[:id])
