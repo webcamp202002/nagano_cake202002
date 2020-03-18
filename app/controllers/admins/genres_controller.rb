@@ -3,19 +3,23 @@ class Admins::GenresController < Admins::BaseController
 		@genre = Genre.new
 		@genres = Genre.all
 	end
-	def create
-		@genre = Genre.new
-		@genre.save
-		redirect_back(fallback_location: genre_path(genre))
 
+	def create
+		@genre = Genre.new(genre_params)
+		@genre.save
+		redirect_back(fallback_location: admins_genres_path(@genre))
 	end
+
 	def edit
-		@genre.find(params[:id])
+		@genre = Genre.find(params[:id])
 	end
+
 	def update
 	end
+
+	private
 	def genre_params
-		params.require_params(:genre).permit(:name,:status)
+		params.require(:genre).permit(:name,:status)
 	end
 
 end
