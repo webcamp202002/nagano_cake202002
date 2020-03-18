@@ -1,5 +1,5 @@
 <h1>商品　新規登録画面</h1>
-<%= form_for(admins_products_path) do |f| %>
+<%= form_for(@product,url:admins_products_path) do |f| %>
 <% if @product.errors.any? %>
 	<h3><%= @product.errors.count %>error occurrence</h3><!--エラーメッセ-->
 	<ul>
@@ -11,20 +11,23 @@
     <div class="field">
 	<%= f.label :image %>
 	<%= f.attachment_field :image %>
+	</div>
 
 	<div class="field row">
 		<%= f.label :name %>
-		<%= f.text_field :name, class: "col-xs-12 book_title" %>
+		<%= f.text_field :name %>
 	</div>
 
 	<div class="field row">
 		<%= f.label :introduction %>
-		<%= f.text_area :introduction, class: "col-xs-12 book_body" %>
+		<%= f.text_area :introduction %>
 	</div>
 
 	<div class="field row">
-		<%= f.label :genre %> 		<%= f.select :genre %>
+		<%= f.label :genre_id %>
+		<%= f.collection_select :genre_id, Genre.all,:id, :name  %>
 	</div>
+
 
 	<div class="field row">
 		<%= f.label :unit_price %>
@@ -32,8 +35,7 @@
 	</div>
 
 	<div class="field row">
-		<%= f.label :sale_status %>
-		<%= f.select :sale_status %>
+		<%= f.select(:sale_status, [['販売中', 1], ['売り切れ', 2]]) %>
 	</div>
 
 	<div class="actions row">

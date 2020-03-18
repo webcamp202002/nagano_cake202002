@@ -11,11 +11,11 @@
 		<%if @products.present? %>
 		<% @products.each do |product| %>
 		<tr>
-			<td><%= @product.id %></td>
-			<td><%= @product.name %></td>
-			<td><%= @product_unit_price %></td>
-			<td><%= @product.genre %></td>
-			<td><%= @product.status %></td>
+			<td><%= product.id %></td>
+			<td><%= product.name %></td>
+			<td><%= product_unit_price %></td>
+			<td><%= product.genre %></td>
+			<td><%= product.status %></td>
 		</tr>
 		<% end %>
 		<% end %>

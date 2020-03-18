@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 	validates :name, presence: true
     validates :introduction, presence: true
     validates :image, presence: true
+    attachment :image
 
-	enum sale_status:{sale: 0,sold_out:1}
+	enum sale_status: [:sale,:sold_out]
 end
