@@ -15,4 +15,8 @@ class Admins::MembersController < Admins::BaseController
 		@member = Member.find(params[:id])
 	end
 
+private
+def member_params
+	prams.require(:member).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:postcode,:address,:is_withdraw)
+end
 end

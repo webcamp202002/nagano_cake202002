@@ -1,0 +1,33 @@
+<h1>会員詳細画面</h1>
+<div>
+	<p>顧客ID</p>
+	<%= @member.id%><%= @member.is_withdrow %>
+</div>
+<div>
+	<p>氏名</p>
+	<%= @member.first_name %><%= @member.last_name %>
+</div>
+<div>
+	<p>フリガナ</p>
+	<%= @member.kana_first_name %><%= @member.kana_last_name %>
+</div>
+<div>
+	<p>郵便番号</p>
+	<%= @mumber.postcode %>
+</div>
+<div>
+	<p>住所</p>
+	<%= @member.address %>
+</div>
+<div>
+	<p>電話番号</p>
+	<%= @member.phone_number %>
+</div>
+<div>
+	<p>メールアドレス</p>
+	<%= @member.email %>
+</div>
+<div>
+	<% link_to '編集する' edit_admins_member_path %>
+	<% link_to '注文履歴一覧を見る' admins_order_path %>
+</div>
