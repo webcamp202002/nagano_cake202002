@@ -1,8 +1,11 @@
 class Members::OrdersController <  Members::BaseController
 	def new
+		@member = Member.find(params[:id])
+		@order = Order.new(params[:id])
 	end
 
 	def create
+		@order = Order.params[:id])
 	end
 
 	def index
@@ -12,5 +15,8 @@ class Members::OrdersController <  Members::BaseController
 	end
 
 	def confirm
+		@order = Order.new(params[:id])
+		
+		
 	end
 end
