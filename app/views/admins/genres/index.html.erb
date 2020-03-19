@@ -7,12 +7,12 @@
 			<%= f.text_field :name %>
 		</p>
 		<label>
-			<%= f.radio_button :status, true %>
-				<%= f.label :status, "有効", {value: :true, style: "display: inline-block;"} %>
+			<%= f.radio_button :status, :published %>
+				<%= f.label :status, "有効"%>
 		</label>
 		<label>
-			<%= f.radio_button :status, false %>
-				<%= f.label :status, "無効", {value: :false, style: "display: inline-block;"} %>
+			<%= f.radio_button :status, :published %>
+				<%= f.label :status, "無効" %>
 		</label>
 		<%= f.submit %>
 		<% end %>
@@ -28,7 +28,7 @@
 		<tr>
 			<td><%= genre.name %></td>
 			<td><%= genre.status_i18n %></td>
-			<td><%= link_to "編集する",edit_admins_genre_path(genre.id) %></td>
+			<td><%= link_to "編集する",edit_admins_genre_path(genre) %></td>
 		</tr>
 		<% end %>
 		<% end %>

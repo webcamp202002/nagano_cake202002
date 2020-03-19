@@ -31,12 +31,12 @@
 		</p>
 		<div>
 			<label>
-				<%= f.radio_button :is_withdrow, true %>
-				<%= f.label :is_withdrow, "有効", {value: :true, style: "display: inline-block;"} %>
+				<%= f.radio_button :is_withdrow, :published%>
+				<%= f.label :is_withdrow, "有効" %>
 			</label>
 			<label>
-				<%= f.radio_button :is_withdrow, false %>
-				<%= f.label :is_withdrow, "無効", {value: :false, style: "display: inline-block;"} %>
+				<%= f.radio_button :is_withdrow, :draft %>
+				<%= f.label :is_withdrow, "無効" %>
 			</label>
 		</div>
 		<%= f.submit %>
