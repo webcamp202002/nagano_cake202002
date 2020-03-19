@@ -1,4 +1,49 @@
+<%= form_for(model: @member, url:admins_member_path,  local: true) do |f| %>
 <h1>会員編集画面</h1>
 <div>
-<p>会員ID</p><%= @member.id %>
+	<p>会員ID</p><%= @member.id %>
+	<div>
+		<p>氏名
+			<%= f.label :last_name %>
+			<%= f.text_field :last_name %>
+			<%= f.label :first_name %>
+			<%= f.text_field :first_name %>
+		</p>
+		<p>フリガナ
+			<%= f.label :kana_last_name %>
+			<%= f.text_field :kana_last_name %>
+			<%= f.label :kana_first_name %>
+			<%= f.text_field :kana_first_name %>
+		</p>
+		<p>郵便番号
+			<%= f.label :postcode %>
+			<%= f.text_field :postcode %>
+		</p>
+		<p>住所
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+		</p>
+		<p>電話番号
+			<%= f.label :phone_number %>
+			<%= f.text_field :phone_number %>
+		</p>
+		<p>メールアドレス
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</p>
+		<div>
+			会員ステータス
+			<label>
+				<%= f.radio_button :status, true %>
+				<%= f.label :status, "有効", {value: :true, style: "display: inline-block;"} %>
+			</label>
+			<label>
+				<%= f.radio_button :status, false %>
+				<%= f.label :status, "無効", {value: :false, style: "display: inline-block;"} %>
+			</label>
+		</div>
+		<%= f.submit %>
+	</div>
+
 </div>
+<% end %>

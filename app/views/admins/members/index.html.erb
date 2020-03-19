@@ -10,7 +10,11 @@
 	<% @members.each do |member| %>
 	<tr>
 		<td><%= member.id %></td>
-		<td><%= member.first_name %><%= member.last_name %></td>
+		<td>
+		<%= link_to admins_member_path(member) do %>
+		<%= member.last_name %><%= member.first_name %>
+			<% end %>
+		</td>
 		<td><%= member.email %></td>
 		<td><%= member.is_withdrow_i18n %></td>
 	</tr>

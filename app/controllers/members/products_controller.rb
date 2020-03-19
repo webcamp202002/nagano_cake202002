@@ -1,12 +1,12 @@
 class Members::ProductsController < Members::BaseController
 	def index
 	if params[:genre_id]
-		@products = Product.where(genre_id: params[:genre:id])
+		@products = Product.where(genre_id: params[:genre_id])
 	else
 		@products = Product.all
 	end
 
-		@henres = Genre.all
+		@genres = Genre.all
 
 	end
 
@@ -14,7 +14,7 @@ class Members::ProductsController < Members::BaseController
 		@product = Product.find(params[:id])
 		@cart = Product.new
 		@cart.save
-		redirect to members_cart_products_path(@cart)
+		redirect to members_cart_products_path()
 	end
 
 
