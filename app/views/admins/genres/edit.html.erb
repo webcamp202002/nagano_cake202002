@@ -3,7 +3,7 @@
 		<hi>ジャンル編集画面</hi>
 		<p>ジャンル</p>
 		<div>
-			<%= form_with(model:@genre,url:edit_admins_genre_path, local: true) do |f| %>
+			<%= form_with(model:@genre,url:admins_genre_path, local: true) do |f| %>
 			<p>ジャンル
 				<%= f.label :name %>
 				<%= f.text_field :name%>
