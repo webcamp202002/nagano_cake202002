@@ -8,5 +8,5 @@ class Product < ApplicationRecord
     validates :image, presence: true
     attachment :image
 
-	enum sale_status: [:sale,:sold_out]
+	enum sale_status: { sale: 0, sold_out: 1}
 end

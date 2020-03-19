@@ -9,9 +9,10 @@ class Admins::ProductsController < Admins::BaseController
 		@product = Product.new
 	end
 	def create
+		# binding.pry
 		@product = Product.new(product_params)
 		@product.save
-		redirect_to admins_product_path
+		redirect_to admins_product_path(@product)
 
 	end
 	def edit
@@ -22,6 +23,6 @@ class Admins::ProductsController < Admins::BaseController
 	end
 
 	def product_params
-    params.require(:product).permit(:name, :unit_price, :sale_status, :image)
+    params.require(:product).permit(:name, :unit_price, :sale_status, :image,:genre_id,:introduction)
   end
 end
