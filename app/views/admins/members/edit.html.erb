@@ -1,45 +1,42 @@
-<%= form_for(model: @member, url:admins_member_path,  local: true) do |f| %>
+<%= form_with(model:@member, url:admins_member_path,  local: true) do |f| %>
 <h1>会員編集画面</h1>
 <div>
 	<p>会員ID</p><%= @member.id %>
 	<div>
-		<p>氏名
-			<%= f.label :last_name %>
+		<p>
+			<%= f.label :氏名 %>
 			<%= f.text_field :last_name %>
-			<%= f.label :first_name %>
 			<%= f.text_field :first_name %>
 		</p>
-		<p>フリガナ
-			<%= f.label :kana_last_name %>
+		<p>
+			<%= f.label :フリガナ %>
 			<%= f.text_field :kana_last_name %>
-			<%= f.label :kana_first_name %>
 			<%= f.text_field :kana_first_name %>
 		</p>
-		<p>郵便番号
-			<%= f.label :postcode %>
+		<p>
+			<%= f.label :郵便番号 %>
 			<%= f.text_field :postcode %>
 		</p>
-		<p>住所
-			<%= f.label :address %>
+		<p>
+			<%= f.label :住所 %>
 			<%= f.text_field :address %>
 		</p>
-		<p>電話番号
-			<%= f.label :phone_number %>
+		<p>
+			<%= f.label :電話番号 %>
 			<%= f.text_field :phone_number %>
 		</p>
-		<p>メールアドレス
-			<%= f.label :email %>
+		<p>
+			<%= f.label :メールアドレス %>
 			<%= f.text_field :email %>
 		</p>
 		<div>
-			会員ステータス
 			<label>
-				<%= f.radio_button :status, true %>
-				<%= f.label :status, "有効", {value: :true, style: "display: inline-block;"} %>
+				<%= f.radio_button :is_withdrow, true %>
+				<%= f.label :is_withdrow, "有効", {value: :true, style: "display: inline-block;"} %>
 			</label>
 			<label>
-				<%= f.radio_button :status, false %>
-				<%= f.label :status, "無効", {value: :false, style: "display: inline-block;"} %>
+				<%= f.radio_button :is_withdrow, false %>
+				<%= f.label :is_withdrow, "無効", {value: :false, style: "display: inline-block;"} %>
 			</label>
 		</div>
 		<%= f.submit %>

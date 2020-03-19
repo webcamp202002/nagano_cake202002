@@ -5,6 +5,7 @@ class Admins::GenresController < Admins::BaseController
 	end
 
 	def create
+		binding.pry
 		@genre = Genre.new(genre_params)
 		@genre.save
 		redirect_back(fallback_location: admins_genres_path(@genre))
