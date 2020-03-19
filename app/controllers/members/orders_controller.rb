@@ -16,7 +16,6 @@ class Members::OrdersController <  Members::BaseController
 
 	def confirm
 		@order = Order.new(params[:id])
-		
-		
+
 	end
 end

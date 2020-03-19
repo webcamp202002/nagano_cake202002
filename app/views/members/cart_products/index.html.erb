@@ -1,0 +1,13 @@
+<h1>カート内一覧</h1>
+	<%
+ for item in @items
+   product = item.product
+ -%>
+   <tr>
+     <td><%= item.quantity %></td>
+     <td><%= h(product.title) %></td>
+     <td align="right"><%= item.unit_price %></td>
+     <td align="right"><%= item.unit_price * item.quantity %></td>
+   </tr>
+ <% end -%>
+ </table></h1>

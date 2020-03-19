@@ -16,6 +16,12 @@ class Members::ProductsController < Members::BaseController
 		@cart.save
 		redirect to members_cart_products_path()
 	end
+	def create
+		 product = Product.find(params[:id])
+   @cart = find_cart
+   @cart.add_product(product)
+   redirect_to(:action => 'display_cart')
+	end
 
 
 private
@@ -23,4 +29,7 @@ private
 def product_params
     params.require(:product).permit(:name, :unit_price, :sale_status, :image,:genre_id,:introduction)
   end
+  def find_cart
+   session[:cart] ||= Cart.new
+ end
 end
