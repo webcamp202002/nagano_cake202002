@@ -6,7 +6,6 @@ ja:
         wait_create: 制作待ち
         create: 製作中
         finish: 制作完
-  enums:
     order:
       order_status:
         wait: 入金待ち
@@ -17,7 +16,14 @@ ja:
       payment_method:
         card: 販売中
         bank: 売り切れ
-  enums:
+    genre:
+      status:
+        published: 有効
+        draft: 無効
+    member:
+      is_withdrow:
+        published: 有効
+        draft: 無効
     product:
       sale_status:
         sale: 販売中

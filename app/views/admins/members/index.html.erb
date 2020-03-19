@@ -9,10 +9,10 @@
 	<%if @members.present? %>
 	<% @members.each do |member| %>
 	<tr>
-		<td><%= @member.id %></td>
-		<td><%= @member.first_name %><%= @member.last_name %></td>
-		<td><%= @member.email %></td>
-		<td><%= @member.is_withdrow_i18n %></td>
+		<td><%= member.id %></td>
+		<td><%= member.first_name %><%= member.last_name %></td>
+		<td><%= member.email %></td>
+		<td><%= member.is_withdrow_i18n %></td>
 	</tr>
 	<% end %>
 	<% end %>
