@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
 	has_many :products
-
-	validates :status, inclusion: {in: [true, false]}
+	
+	enum status: { draft: false, published: true }
 end

@@ -1,6 +1,6 @@
 class Admins::MembersController < Admins::BaseController
 	def index
-		@menbers = Member.all
+		@members = Member.all
 	end
 
 	def show
@@ -17,6 +17,6 @@ class Admins::MembersController < Admins::BaseController
 
 private
 def member_params
-	prams.require(:member).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:postcode,:address,:is_withdraw)
+	prams.require(:member).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:postcode,:address,:is_withdrow)
 end
 end
