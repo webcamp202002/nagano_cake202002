@@ -1,0 +1,7 @@
+<%if @genres.present? %>
+<h4>ジャンル検索</h4>
+<% @genres.each do |genre| %>
+<%= genre.name %>
+<% end %>
+
+
