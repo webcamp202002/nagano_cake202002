@@ -13,10 +13,15 @@ class Admins::MembersController < Admins::BaseController
 
 	def update
 		@member = Member.find(params[:id])
+		if @member.update(member_params)
+			redirect_to admins_member_path(@member)
+		else
+			redirect_to edit_admins_member_path(@member)
+		end
 	end
 
 private
 def member_params
-	prams.require(:member).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:postcode,:address,:is_withdrow)
+	params.require(:member).permit(:last_name,:first_name,:kana_last_name,:kana_first_name,:phone_number,:postcode,:address,:is_withdrow)
 end
 end
