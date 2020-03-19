@@ -82,6 +82,56 @@ background-position: center;
 	background-position: center;
 }
 
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+  background-color: #FFE4B5;
+}
+.nav-list-item {
+  list-style: none;   
+  display: inline-block;
+  margin: 0 20px;
+  background-color: #FFE4B5;
+}
 
+.navbar-brand-center {
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align:center;
+    margin: auto;
+}
 
+.navbar-brand {
+	color: #3CB371
+}
 
+.box18{
+    margin: 20px;
+    position: relative;
+    padding: 30px;
+    border: solid 2px #ffcb8a;
+    border-radius: 3px 0 3px 0;
+}
+.box18:before,.box18:after
+{
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    border: solid 2px #ffcb8a;
+    border-radius: 50%;
+}
+.box18:after {
+    top:-12px;
+    left:-12px;
+}
+.box18:before {
+    bottom:-12px;
+    right:-12px;
+}
+.box18 p {
+    
+    padding: 0;
+}

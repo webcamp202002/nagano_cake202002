@@ -12,7 +12,7 @@ class Admins::ProductsController < Admins::BaseController
 		# binding.pry
 		@product = Product.new(product_params)
 		@product.save
-		redirect_to admins_product_path(@product)
+		redirect_to admins_products_path(@product)
 
 	end
 	def edit
