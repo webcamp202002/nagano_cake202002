@@ -1,7 +1,7 @@
-<%= form_with(model:@member, url:admins_member_path,  local: true) do |f| %>
+<%= form_for(@member, url:admins_member_path,  local: true) do |f| %>
 <h1>会員編集画面</h1>
 <div>
-	<p>会員ID</p><%= @member.id %>
+	<p>会員ID<%= @member.id %></p>
 	<div>
 		<p>
 			<%= f.label :氏名 %>
