@@ -1,42 +1,45 @@
 <div class= "container">
 	<div class= "row">
-		<div lass= "col-xs3">
-			<%if @genres.present? %>
-			<h4>ジャンル検索</h4>
-			<% @genres.each do |genre| %>
-			<table>
-			<tr>
-				<td>
-					<%= link_to members_products_path(genre.id) do %>
-					<%= genre.name %>
+		<div lass= "col-xs-3">
+			<div class="box18">
+				<p>ジャンル検索
+				<%if @genres.present? %>
+					<% @genres.each do |genre| %>
+					<table>
+						<tr>
+							<td>
+								<%= link_to members_products_path(genre.id) do %>
+								<%= genre.name %></p>
+								<% end %>
+							</td>
+						</tr>
+					</table>
 					<% end %>
-				</td>
-			</tr>
-		</table>
-			<% end %>
-			<% end %>
-
+					<% end %>
+				</end>
+			</div>
 		</div>
-		<div  lass= "col-xs9">
-			<div style = "text-align: center">
-				<h2><strong>商品一覧</strong></h2>
+
+			<div  lass= "col-xs9">
+				<div style = "text-align: center">
+					<h2><strong>商品一覧</strong></h2>
 
 
-				<%if @products.present? %>
-				<% @products.each do |product| %>
-				<div class="item">
-					<div class="col-xs-3 each_item">
-						<%= link_to members_product_path(product) do %>
-						<%= attachment_image_tag(product, :image, :fill, 100, 100) %>
-						<% end %>
-						<%= product.name %>
-						<p>¥<%= product.unit_price %></p>
+					<%if @products.present? %>
+					<% @products.each do |product| %>
+					<div class="item">
+						<div class="col-xs-3 each_item">
+							<%= link_to members_product_path(product) do %>
+							<%= attachment_image_tag(product, :image, :fill, 100, 100) %>
+							<% end %>
+							<%= product.name %>
+							<p>¥<%= product.unit_price %></p>
+						</div>
 					</div>
+					<% end %>
+					<% end %>
 				</div>
-				<% end %>
-				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
-
