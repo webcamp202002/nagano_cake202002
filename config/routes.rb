@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     passwords:     'members/passwords',
     registrations: 'members/registrations'
   }
-  devise_scope :member do
-    post 'members/guest_sign_in',to: 'members/session#new_guest'
 
     namespace :members do
       resources :members,only: [:index,:edit,:update,:show]
@@ -20,7 +18,6 @@ Rails.application.routes.draw do
       resources :orders ,only: [:new,:create,:index,:show]do
       patch :toggle_status
     end
-  end
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
   get 'orders/confirm' => 'orders#confirm'
   get 'orders/finish' => 'orders#finish'
