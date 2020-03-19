@@ -1,0 +1,13 @@
+<h1>商品詳細</h1>
+<div>
+<%= attachment_image_tag(@product, :image, :fill, 100, 100) %>
+</div>
+<div>
+<div>
+<%= @product.name %>
+</div>
+<div><%= @product.introduction %></div>
+<div><%= @product.unit_price %></div>
+<div><%= @product.genre.name %></div>
+<div><%= @product.sale_status_i18n %></div>
+</div>

@@ -6,7 +6,7 @@
 		<th>メールアドレス</th>
 		<th>ステータス</th>
 	</tr>
-	<%if @members.presents? %>
+	<%if @members.present? %>
 	<% @members.each do |member| %>
 	<tr>
 		<td><%= @member.id %></td>

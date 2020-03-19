@@ -22,7 +22,7 @@
             <li><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
             <li><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
             <li><%= link_to 'カート', members_cart_product_path(current_member), class: "nav-link disabled" %></li>
-            <li><%= link_to 'ログアウト', destroy_member_session_path, class: "nav-link disabled" %></li>
+            <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
             <% else %>
             <li><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
             <li><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>

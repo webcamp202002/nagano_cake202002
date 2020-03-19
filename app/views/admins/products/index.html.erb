@@ -12,10 +12,13 @@
 		<% @products.each do |product| %>
 		<tr>
 			<td><%= product.id %></td>
-			<td><%= product.name %></td>
-			<td><%= product_unit_price %></td>
-			<td><%= product.genre %></td>
-			<td><%= product.status %></td>
+			<td><%= link_to admins_product_path(product) do %>
+				<%= product.name %>
+				<% end %>
+			</td>
+			<td><%= product.unit_price %></td>
+			<td><%= product.genre.name %></td>
+			<td><%= product.sale_status_i18n %></td>
 		</tr>
 		<% end %>
 		<% end %>

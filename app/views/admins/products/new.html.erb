@@ -35,8 +35,8 @@
 	</div>
 
 	<div class="field row">
-		<%= f.select(:sale_status, [['販売中', 1], ['売り切れ', 2]]) %>
-	</div>
+        <%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
+      </td>
 
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
