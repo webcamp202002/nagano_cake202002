@@ -9,7 +9,7 @@
 					<div class="item">
 						<div class="col-xs-3 each_item">
 						<%= link_to members_product_path(product) do %>
-						  <%= attachment_image_tag product, :image, style:"width:100%; bottom: 45px;" %>
+						  <%= attachment_image_tag(product, :image, :fill, 100, 100) %>
 						<% end %>
 						<%= product.name %>
 						<p>¥<%= product.unit_price %></p>
