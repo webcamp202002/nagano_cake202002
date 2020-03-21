@@ -1,10 +1,8 @@
 <h1>カート内一覧</h1>
-	<!-- # <%for item in @itemsproduct = item.product %>
- #   <tr>
- #     <td><%= item.quantity %></td>
- #     <td><%= h(product.title) %></td>
- #     <td align="right"><%= item.unit_price %></td>
- #     <td align="right"><%= item.unit_price * item.quantity %></td>
- #   </tr> -->
-<!--  # <% end -%>
- # </table></h1> -->
+
+<% @cart_products.each do |cart_product| %>
+ <tr>
+    <td><%= cart_product.product.quantity %></td>
+    <td><%= cart_product.product.name %></td>
+    <td><%= cart_product.product.unit_price %></td>
+    <% end %>
