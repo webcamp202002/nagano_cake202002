@@ -12,13 +12,7 @@ class Members::ProductsController < Members::BaseController
 
 	def show
 		@product = Product.find(params[:id])
-		@cart = Product.new
-	end
-	def create
-		 product = Product.find(params[:id])
-   @cart = find_cart
-   @cart.add_product(product)
-   redirect_to(:action => 'display_cart')
+		@cart = CartProduct.new
 	end
 
 
