@@ -1,30 +1,25 @@
-class Member::CartProductsController < Members::BaseController
-	before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
+class Members::CartProductsController < Members::BaseController
 
 	def index
-		@cart_products = current_cart.cart_products
+		@cart_products = CartProduct.where(member_id: id)
 	end
 
-	def add_item
-		if @cart_product.blank?
-			@cart_product = current_cart.cart_products.build(product_id: params[:product_id])
-		end
-
-		@cart_product.quantity += params[:quantity].to_i
+	def create
+		@cart_product = current_member.cart_products.build(cart_product_params)
 		@cart_product.save
-		redirect_to current_cart
+		redirect_to members_cart_products_path(@cart_product)
 	end
 
   # カート詳細画面から、「更新」を押した時のアクション
-    def update_item
+    def update
   	  @cart_product.update(quantity: params[:quantity].to_i)
-  	  redirect_to current_cart
-    end
+  	  redirect_back(fallback_location: members_cart_products_path)
+  	end
 
 # カート詳細画面から、「削除」を押した時のアクション
-    def delete_item
-	  @cart_item.destroy
-	  redirect_to current_cart
+    def destroy
+	  @cart_product.destroy
+	  members_cart_products_path
     end
 
     def destroy_all
@@ -33,11 +28,8 @@ class Member::CartProductsController < Members::BaseController
 
   private
 
-    def setup_cart_item!
-	  @cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
-    end
     def cart_product_params
-	  params.require(:cart_product).permit(:member_id,:product_id)
+	  params.require(:cart_product).permit(:member_id,:product_id,:quantity)
     end
 
 end
