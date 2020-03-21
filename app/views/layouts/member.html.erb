@@ -13,13 +13,17 @@
         <div class="navbar-nav ml-auto mr-auto">
           <em><h2 class="navbar-brand navbar-right">NAGANO CAKE</h2><em></header>
             <% if member_signed_in? %>
+            <p>ようこそ、
+             <%= current_member.last_name %>
+             さん！
+           </p>
           <nav>
           <ul class="nav-list">
             <li class="nav-list-item"><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
             
             <li class="nav-list-item"><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
             
-            <li class="nav-list-item"><%= link_to 'カート', members_cart_product_path(current_member), class: "nav-link disabled" %></li>
+            <li class="nav-list-item"><%= link_to 'カート',  members_cart_products_path(current_member), class: "nav-link disabled" %></li>
             
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
             <% else %>

@@ -1,4 +1,10 @@
-<%= attachment_image_tag product, :image, style:"width:100%; bottom: 45px;" %><h3><%= @product.name %></h3>
+<%= attachment_image_tag @product, :image, style:"width:100%; bottom: 45px;" %><h3><%= @product.name %></h3>
 <p><%= @product.introduction%></p>
 <p>￥
-<%= (@product.unit_price * 1.1).round %>(税込み)</p>
+	<%= (@product.unit_price * 1.1).round %>(税込み)</p>
+
+	<%= form_with(model:@cart,url: members_cart_product_path,local: true) do |l| %>
+	<%= l.hidden_field :id, :value => id %>
+	<%= l.hidden_field :product_id, :value => @product.id%>
+	<%= l.submit "カートに入れる" %>
+	<% end %>
