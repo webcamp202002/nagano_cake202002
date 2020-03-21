@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     namespace :members do
       resources :members,only: [:index,:edit,:update,:show]
       resources :cart_products,only: [:index,:create,:update,:destroy]
-      resources :destinations ,only: [:show,:index,:edit,:update,:create]
+      resources :destinations ,only: [:show,:index,:edit,:update,:create,:destroy]
       resources :products ,only: [:show,:index]
       resources :orders ,only: [:new,:create,:index,:show]do
       patch :toggle_status

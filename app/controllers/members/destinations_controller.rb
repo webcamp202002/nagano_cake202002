@@ -5,8 +5,8 @@ class Members::DestinationsController < Members::BaseController
 	end
 
 	def create
-		@destination = Destinstion.new(destination_params)
-		@destinatipn.memnber.id = current_member.id
+		@destination = Destination.new(destination_params)
+		@destination.member_id = current_member.id
 		if @destination.save
 			redirect_back(fallback_location: members_destinations_path)
 		else
@@ -21,21 +21,21 @@ class Members::DestinationsController < Members::BaseController
 	def update
 		@destination = Destination.find(params[:id])
 		if @destination.update(destination_params)
-			redirect to members_destinations_path
+			redirect_to members_destinations_path
 		else
-			redirect to members_destinations_path
+			redirect_to members_destinations_path
 		end
-
+    end
 	def destroy
 		@destination = Destination.find(params[:id])
 		@destination.destroy
-		redirect_back(fallback_location: members_destinations_path)
+		redirect_to members_destinations_path 
 	end
-end
+
 
 private
 
 	def destination_params
-		params.require(:destination).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :address, :postcode, :phone_number, :email, :name)
+		params.require(:destination).permit(:member_id, :address, :postcode, :name, :address)
 	end
 end
