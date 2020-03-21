@@ -9,15 +9,21 @@ Rails.application.routes.draw do
     passwords:     'members/passwords',
     registrations: 'members/registrations'
   }
+   devise_scope :member do
+    post 'members/guest_sign_in', to: 'members/sessions#new_guest'
+  end
 
     namespace :members do
       resources :members,only: [:index,:edit,:update,:show]
-      resources :cart_products,only: [:index,:edit,:update,:destroy,:create]
+      resources :cart_products,only: [:index]
       resources :destinations ,only: [:show,:index,:edit,:update,:create]
       resources :products ,only: [:show,:index]
       resources :orders ,only: [:new,:create,:index,:show]do
       patch :toggle_status
     end
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
   get 'orders/confirm' => 'orders#confirm'
   get 'orders/finish' => 'orders#finish'

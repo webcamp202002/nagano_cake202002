@@ -16,11 +16,4 @@ class Member < ApplicationRecord
          validates :address, presence: true
          validates :phone_number, presence: true
          enum is_withdrow: { draft: false, published: true }
-
-
-        def self.guest
-          find_or_create_by!(email:'guest@example.com') do |member|
-            member.password = SecureRamdom.urlsafe_base64
-          end
-        end
 end

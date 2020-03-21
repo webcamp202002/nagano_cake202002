@@ -9,4 +9,6 @@ class Product < ApplicationRecord
     attachment :image
 
 	enum sale_status: { sale: 0, sold_out: 1}
+
+	
 end
