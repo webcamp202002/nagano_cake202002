@@ -1,12 +1,12 @@
 class Members::ProductsController < Members::BaseController
 	def index
+		@genres = Genre.all
+
 	if params[:genre_id]
 		@products = Product.where(genre_id: params[:genre_id])
 	else
 		@products = Product.all
 	end
-
-		@genres = Genre.all
 
 	end
 
