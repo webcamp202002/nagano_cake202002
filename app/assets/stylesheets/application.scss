@@ -17,6 +17,7 @@
 @import "bootstrap";
 
 
+
 .image1 {
 background-image: url(image10.jpg);
 background-size: cover;
@@ -38,15 +39,14 @@ background-size: cover;
 background-position: center;
 }
 
-#container{
-  height: 300px;
-  width: 100%;
-  padding-right: 70px;
-  padding-left: 70px;
+.container{
+background-color: #FFE4B5;
 }
+
 
 .main-visual-text {
 	float: top;
+	text-align: center;
 }
 
 
@@ -111,7 +111,7 @@ background-position: center;
     margin: 20px;
     position: relative;
     padding: 30px;
-    border: solid 2px #ffcb8a;
+    border: solid 2px #00EE00;
     border-radius: 3px 0 3px 0;
 }
 .box18:before,.box18:after
@@ -131,7 +131,9 @@ background-position: center;
     bottom:-12px;
     right:-12px;
 }
-.box18 p {
-    
-    padding: 0;
+
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

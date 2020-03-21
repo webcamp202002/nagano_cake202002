@@ -1,22 +1,36 @@
-<div style = "text-align: center">
-
-	<div id="container">
-				<div id="theTarget">
-
-					<div class="image1"></div>
-					<div class="image2"></div>
-					<div class="image3"></div>
-					<div class="image4"></div>
-				</div>
-				</div>
-		<p class="main-visual-text">
-			Welcome to NaganoCake！<br>
-			このサイトは、ケーキ販売のECサイトになります。<br>
-			会員でない方も商品の閲覧はできますが、<br>
-		購入には会員登録が必要になります。</p>
-
-
-		<div class ="container" >
+<div class= "container">
+	<div class= "row">
+		<div lass= "col-md-3">
+			<div class="box18">
+				<p><h4><u>ジャンル検索</u>
+					<%if @genres.present? %>
+					<% @genres.each do |genre| %>
+					<table>
+						<tr>
+							<td>
+								<%= link_to members_products_path(genre.id) do %>
+								<%= genre.name %></p></h4>
+								<% end %>
+							</td>
+						</tr>
+					</table>
+					<% end %>
+					<% end %>
+				</end>
+			</div>
+		</div>
+		<div  class= "col-md-9">
+			<div id="theTarget">
+				<div class="image1"></div>
+				<div class="image2"></div>
+				<div class="image3"></div>
+				<div class="image4"></div>
+			</div>
+			<p class="main-visual-text">
+				Welcome to NaganoCake！<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+			購入には会員登録が必要になります。</p>
 			<h2>オススメ商品</h2>
 			<table class="table">
 				<tr>
@@ -42,3 +56,4 @@
 			<%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, method: :post %> 
 		</div>
 	</div>
+</div>
