@@ -11,3 +11,7 @@
 <div><%= @product.genre.name %></div>
 <div><%= @product.sale_status_i18n %></div>
 </div>
+
+<div><%= link_to "編集する" ,edit_admins_product_path(@product) %></div>
+
+<div><%= link_to "削除する",members_product_path(@product.id), method: :delete, data: { confirm:"Are you sure?"} , :class =>"btn btn-danger" %></td></div>

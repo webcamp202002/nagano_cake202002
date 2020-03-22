@@ -1,7 +1,9 @@
 class Members::CartProductsController < Members::BaseController
 
 	def index
-		@cart_products = CartProduct.where(member_id: params[:id].to_i)
+		@cart_product = CartProduct.new
+		@cart_products = CartProduct.where(member_id: current_member)
+		
 	end
 
 	def create
@@ -13,18 +15,27 @@ class Members::CartProductsController < Members::BaseController
 
   # カート詳細画面から、「更新」を押した時のアクション
     def update
-  	  @cart_product.update(quantity: params[:quantity].to_i)
+      @cart_product = CartProduct.find(params[:id])
+  	  @cart_product.update!(cart_product_params)
+  	  @member = Member.find(current_member.id)
   	  redirect_back(fallback_location: members_cart_products_path)
   	end
 
 # カート詳細画面から、「削除」を押した時のアクション
     def destroy
+      @cart_product = CartProduct.find(params[:id])
 	  @cart_product.destroy
-	  members_cart_products_path
+	  redirect_back(fallback_location: members_cart_products_path)
     end
 
     def destroy_all
-	  @cart = CartProduct.find(params[member_id])
+	  member = Member.find(current_member.id)
+	 if member.cart_products.destroy_all
+	 	flash[:notice] = "カートの商品を全て削除しました。"
+	  redirect_to members_products_path
+	else
+		render 'index'
+	end
     end
 
   private

@@ -1,0 +1,50 @@
+<h1>注文情報の入力</h1>
+
+<div>
+	<%= form_with(model: @order,url:members_orders_confirm_path,local:true) do |f| %>
+	 <%= f.hidden_field :member_id %>
+	  <p>支払い方法</p>
+	  <label>
+		  <%= f.radio_button :payment_method, :card %>
+		  <%= f.label :payment_method, "クレジットカード"%>
+	  </label>
+	  <label>
+		  <%= f.radio_button :payment_method, :bank %>
+		  <%= f.label :payment_method, "銀行振込" %>
+	  </label>
+	  <label>
+
+	  <%= radio_button_tag(:address_select,:adress1,checked: "checked") %>
+	  <%= f.label(:address_select,"ご自身の住所", value:"address1") %>
+	  <span>〒<%= current_member.postcode %><%= current_member.address %></span>
+	  </label>
+	  <label>
+	  <%= radio_button_tag(:address_select,:adress1,checked: "checked") %>
+	  <%= f.label(:address_select, "登録済住所から選択", value: "address1") %>
+	  <%= f.collection_select(:adress,@destination,:id,:view_postcode_and_adress_and_name) %>
+	  </label>
+	  <label>
+	  <%= radio_button_tag(:address_select,:adress1,checked: "checked") %>
+	  <%= f.label(:address_select, "新しいお届け先", value: "address1") %>
+
+	  <%= f.fields_for :destination do |d| %>
+	  <div>郵便番号(ハイフンなし)</div>
+	  <div><%= d.text_field :postcode, style: "width: 30%;" %></div>
+
+
+      <td>住所</td>
+	  <td><%= d.text_field :address, style: "width: 100%;" %></td>
+
+      <tr>
+	  <td>宛名</td>
+	  <td><%= d.text_field :name, style: "width: 30%;" %></td>
+      <div class="text-right">
+	  <%= f.submit class: "btn btn-primary col-xs-12" %>
+      </div>
+      <% end %>
+  </label>
+
+
+
+    <% end %>
+</div>
