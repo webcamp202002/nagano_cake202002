@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
          has_many :cart_products
          has_many :orders
+         has_many :destinations
 
 
          validates :last_name, presence: true

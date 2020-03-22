@@ -6,7 +6,7 @@ class Members::MembersController < Members::BaseController
 
 
 	def show
-		current_member= Member.find(params[:id])
+		@member = Member.find(params[:id])
 		unless current_member.nil? || current_member.id == current_member.id
 			flash[:warning] = "アクセス権がありません"
 			redirect_to member_path(current_member)
@@ -38,12 +38,16 @@ class Members::MembersController < Members::BaseController
 
 
 
-	def withdraw
+	def change
 		current_member.is_destroyed = true
 		current_member.save
 		flash[:success] =  "さようなら、#{current_member.first_name}さん"
 		redirect_to destroyed_member_session_path
 	end
+
+    def  change
+
+    end
 
 
 

@@ -26,8 +26,14 @@
 				<td style=“border-bottom: 1px solid #DAD7D7;“><%= current_member.email %></td>
 			</tr>
 	</table>
+
+  <%= link_to '登録情報を編集する', edit_members_member_path %>
+  <%= link_to 'パスワードを編集する', edit_member_password_path %>
+  <hr>
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h4>
 		<%= link_to members_destinations_path do %>
 			一覧を見る<span class="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
+
+
 </div>

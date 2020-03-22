@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
   get 'orders/confirm' => 'orders#confirm'
   get 'orders/finish' => 'orders#finish'
+  get 'members/withdraw'=> 'members#withdraw'
   patch 'members/change' => 'member#change'
 end
 

@@ -1,0 +1,21 @@
+<table>
+  <h2>送付先情報登録</h2>
+  <%= form_for(new_destination, url: create_members_destinations_path(member_id: member.id)) do |f| %>
+    <h4>送付先住所</h4>
+      <div class="field">
+        <%= f.label :郵便番号 %><br />
+        <%= f.text_field :postcode %>
+      </div>
+    <div class="field">
+      <%= f.label :送付先住所 %><br />
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :宛先 %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div style="margin-top:10px;">
+    <%= f.submit '送付先新規作成', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</table>
