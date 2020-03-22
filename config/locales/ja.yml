@@ -10,12 +10,12 @@ ja:
       order_status:
         wait: 入金待ち
         confirm: 入金確認中
-        create: 製作中
+        start: 製作中
         preparation: 配送準備中
         finish: 配送完了
-      payment_method:
-        card: 販売中
-        bank: 売り切れ
+    payment_method:
+        card: クレジットカード
+        bank: 銀行振込
     genre:
       status:
         published: 有効

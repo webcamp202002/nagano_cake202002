@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 	has_many :cart_products
 	has_many :order_products
+	has_many :orders, through: :order_products
 	belongs_to :genre
 
 	validates :name, presence: true
