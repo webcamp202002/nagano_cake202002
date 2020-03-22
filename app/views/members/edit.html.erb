@@ -1,0 +1,89 @@
+<div class=“edit-container” style=“width:50%; margin: 20px auto; position: relative;“>
+  <h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>会員情報編集</h4>
+<%= form_for(@member, url:member_path(@member), method: :patch) do |f| %>
+       <%= link_to destroy_member_path(@member), method: :patch, data: { confirm: ‘本当に退会しますか？’ } do %>
+              <span class=“btn btn-danger” style=“position: absolute; top: 30px; right: 50px;“>退会する</span>
+       <% end %>
+    <div class=“row” style=“height: 20px;“></div>
+<div class=“form-group”>
+    <label>姓</label>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: “last_name”, style: “margin;”  %>
+    <label>名</label>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: “first_name” %>
+  </div>
+  <div class=“form-group”>
+    <label>セイ</label>
+    <%= f.text_field :kana_last_name, autofocus: true, autocomplete: “kana_last_name” %>
+    <label>メイ</label>
+    <%= f.text_field :kana_first_name, autofocus: true, autocomplete: “kana_first_name” %>
+  </div>
+  <div class=“form-group”>
+    <label>郵便番号（ハイフンなし）</label>
+    <%= f.text_field :postcode, autofocus: true, autocomplete: “postcode” %>
+  </div>
+   <div class=“form-group”>
+    <label>住所</label>
+    <%= f.text_field :address, autofocus: true, autocomplete: “address”, style: “width: 80%;” %>
+  </div>
+  <div class=“form-group”>
+    <label>電話番号</label>
+    <%= f.telephone_field :phone_number, autofocus: true, autocomplete: “phone_number” %>
+  </div>
+  <div class=“form-group”>
+    <label>メールアドレス</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: “email” %>
+  </div>
+  <hr>
+  <div style=“text-align:center;“>
+    <%= f.submit “変更を保存する“, class:“btn btn-success”, style: “display:inline-block” %>
+  </div>
+  <%= link_to member_path(@member) do %>
+      <span class=“glyphicon glyphicon-chevron-left”>マイページ</span>
+  <% end %>
+<% end %>
+</div>
+20:16
+<div class=“show-container” style=“width:50%; margin: 20px auto;“>
+  <h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>マイページ</h4>
+  <table class=“table table-condensed”>
+    <tbody>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>名前</th>
+        <td><%= @member.last_name %> <%= @member.first_name %></td>
+      </tr>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>フリガナ</th>
+        <td><%= @member.kana_last_name %> <%= @member.kana_last_name %></td>
+      </tr>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>郵便番号</th>
+        <td>〒 <%= @member.postcode %></td>
+      </tr>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>住所</th>
+        <td><%= @member.address %></td>
+      </tr>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>電話番号</th>
+        <td><%= @member.phone_number %></td>
+      </tr>
+      <tr>
+        <th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>メールアドレス</th>
+        <td style=“border-bottom: 1px solid #DAD7D7;“><%= @member.email %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to ‘登録情報を編集する‘, edit_member_path(@member), class:“btn btn-info” %>
+  <%= link_to ‘パスワードを編集する’, edit_member_registration_path, class:“btn btn-success” %>
+  <hr>
+  <h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>配送先</h4>
+    <%= link_to destinations_path do %>
+      一覧を見る<span class=“glyphicon glyphicon-chevron-right”></span>
+    <% end %>
+  <hr>
+  <h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>注文履歴</h4>
+    <%= link_to orders_path(id: @user.id) do %>
+      一覧を見る<span class=“glyphicon glyphicon-chevron-right”></span>
+    <% end %>
+  <hr>
+</div>
