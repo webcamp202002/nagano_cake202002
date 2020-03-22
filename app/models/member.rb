@@ -4,9 +4,9 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :cart_products
-         has_many :orders
-         has_many :destinations
+         has_many :cart_products,dependent: :destroy
+         has_many :orders,dependent: :destroy
+         has_many :destinations,dependent: :destroy
 
 
          validates :last_name, presence: true
