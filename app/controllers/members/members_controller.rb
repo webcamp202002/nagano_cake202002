@@ -47,7 +47,6 @@ class Members::MembersController < Members::BaseController
 		redirect_to root_path
 	end
 
-
     def destroy
     end
 

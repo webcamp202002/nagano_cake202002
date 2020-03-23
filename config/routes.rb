@@ -21,11 +21,12 @@ Rails.application.routes.draw do
     resources :cart_products,only: [:index,:create,:update,:destroy]
     resources :destinations ,only: [:show,:index,:edit,:update,:create,:destroy]
     resources :products ,only: [:show,:index]
+    get 'orders/confirm' => 'orders#confirm'
     resources :orders ,only: [:new,:create,:index,:show]do
     patch :toggle_status
   end
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
-  get 'orders/confirm' => 'orders#confirm'
+  
   get 'orders/finish' => 'orders#finish'
 
 end
