@@ -19,28 +19,31 @@
 				</end>
 			</div>
 		</div>
-	
+		
 
-			<div  class= "col-md-9">
-					<h2><strong>商品一覧</strong></h2>
-
-
-					<%if @products.present? %>
-					<div class="item">
-					<% @products.each do |product| %>
-					<div class="item">
-						<div class="col-xs-3 each_item">
-							<%= link_to members_product_path(product) do %>
-							<%= attachment_image_tag(product, :image, size: "300x200") %>
-							<% end %>
-							<p><%= product.name %></p>
-							<p>¥<%= product.unit_price %></p>
-						</div>
-					</div>
-					<% end %>
-					<% end %>
+		<div  class= "col-md-9">
+			<div class="row" style= "width: 100%; margin: 20px auto;">
+				<div class="form-horizontal">
+					<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品一覧</h4>
 				</div>
+			</div>
+
+			<%if @products.present? %>
+			<div class="item">
+				<% @products.each do |product| %>
+				<div class="item">
+					<div class="col-xs-3 each_item">
+						<%= link_to members_product_path(product) do %>
+						<%= attachment_image_tag(product, :image, size: "300x200") %>
+						<% end %>
+						<p><%= product.name %></p>
+						<p>¥<%= product.unit_price %></p>
+					</div>
+				</div>
+				<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

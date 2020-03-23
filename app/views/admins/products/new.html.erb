@@ -1,5 +1,9 @@
-<h1>商品 新規登録画面</h1>
-<%= form_for(@product,url:admins_products_path) do |f| %>
+<div class="row" style= "width: 80%; margin: 20px auto;">
+  <div class="form-horizontal">
+      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品新規登録画面</h4>
+    </div>
+  </div>
+  <%= form_for(@product,url:admins_products_path) do |f| %>
 <% if @product.errors.any? %>
 	<h3><%= @product.errors.count %>error occurrence</h3><!--エラーメッセ-->
 	<ul>
@@ -8,37 +12,52 @@
 		<% end %>
 	</ul>
 <% end %>
-    <div class="field">
+
+<div class="col-md-10">
+<div class="form-group">
+	<div class="col-sm-2">
 	<%= f.label :image %>
 	<%= f.attachment_field :image %>
 	</div>
+</div>
 
-	<div class="field row">
+<div class="form-group">
+	<div class="col-sm-2">
 		<%= f.label :name %>
-		<%= f.text_field :name %>
+		<%= f.text_field :name, class:"form-control", id:"InputName", autocomplete: "name" %>
 	</div>
+</div>
 
-	<div class="field row">
+	<div class="form-group">
+		<div class="col-sm-2">
 		<%= f.label :introduction %>
-		<%= f.text_area :introduction %>
+		<%= f.text_area :introduction, class:"form-control", id:"InputIntroduction", autocomplete: "introduction", rows: 6 %>
 	</div>
+</div>
 
-	<div class="field row">
+	<div class="form-group">
+		<div class="col-sm-2">
 		<%= f.label :genre_id %>
 		<%= f.collection_select :genre_id, Genre.all,:id, :name  %>
 	</div>
+</div>
 
 
-	<div class="field row">
+	<div class="form-group">
+		<div class="col-sm-2">
 		<%= f.label :unit_price %>
 		<%= f.text_area :unit_price %>
 	</div>
+</div>
 
-	<div class="field row">
+	<div class="form-group">
+		<div class="col-sm-2">
         <%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
-      </td>
+      </div>
+  </div>
 
-	<div class="actions row">
+	<div class="form-group">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
+</div>
 <% end %>
