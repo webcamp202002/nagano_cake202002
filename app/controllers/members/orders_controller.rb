@@ -1,4 +1,5 @@
 class Members::OrdersController <  Members::BaseController
+	before_action :authenticate_member!
 	def new
 	    @order = Order.new
 	    @address = current_member.destinations
@@ -11,7 +12,7 @@ class Members::OrdersController <  Members::BaseController
 		  redirect_to members_menber_finish_path
     end
 	def index
-		@orders = Order.where(member_id: current_membe)
+		@orders = Order.where(member_id: current_member)
 	end
 
 	def show
@@ -20,32 +21,27 @@ class Members::OrdersController <  Members::BaseController
 
 	def confirm
 		@order = Order.new(order_params)
-		# render :new if @order.invalid?
+		@cart_products = current_member.cart_products
+		@order.member_id = current_member.id
 		if params[:address_select] == "address1"
 			@order.postcode = current_member.postcode
 			@order.address = current_member.address
 			@order.name = current_member.last_name + current_member.first_name
-		elsif
-			params[:address_select] == "address2"
-			@destination = Destination.find(params[:member_id])
+		elsif params[:address_select] == "address2"
+			@destination = Destination.find(params[:address_id])
 			@order.postcode = @destination.postcode
 			@order.address = @destination.address
 			@order.name = @destination.name
 		else
 			params[:address_select] == "address3"
-			@address_new = Destination.new(distination_params)
-			@destination.member_id = current_member_id
+			@address_new = Destination.new
 			if @address_new.save
 				@order.postcode = @address_new.postcode
 				@order.address = @address_new.address
 				@order.name = @address.name
+				binding.pry
 			end
 		end
-		# if @order.save
-		# 	redirect_to members_order_path(@order)
-		# else
-		# 	render 'new'
-		# end
 
 	end
 	private
