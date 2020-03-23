@@ -16,6 +16,7 @@ class Members::MembersController < Members::BaseController
 
 
 	def edit
+		@member = Member.find(params[:id])
 		unless current_member.nil? || current_member.id == current_member.id
 			flash[:warning] = "アクセス権がありません"
 			redirect_to member_path(current_member)
