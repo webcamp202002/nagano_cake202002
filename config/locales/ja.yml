@@ -18,8 +18,8 @@ ja:
         bank: 銀行振込
     genre:
       status:
-        published: 有効
-        draft: 無効
+        published: 無効
+        draft: 有効
     member:
       is_withdrow:
         published: 有効
