@@ -1,7 +1,4 @@
 <h1>購入情報確認画面</h1>
-
-<%if @cart_products.present? %>
-<% @cart_products.each do |cart_product| %>
 <table>
 <tr>
 	<th>商品名</th>
@@ -9,6 +6,8 @@
 	<th>数量</th>
 	<th>小計</th>
 </tr>
+<%if @cart_products.present? %>
+<% @cart_products.each do |cart_product| %>
 <tr>
 	<td><%= attachment_image_tag cart_product.product, :image, style:"width:100px; bottom: 5px;" %><%= cart_product.product.name %></td>
 	<td><%= (cart_product.product.unit_price * 1.1).round  %></td>
@@ -17,22 +16,24 @@
 		<td><%= (cart_product.product.unit_price * 1.10 * cart_product.quantity).to_i.to_s(:delimited) %>円 </td>
 	</tr>
 </table>
+<% end %>
+<% end %>
+<table>
 <tr>
-	<th></th>
-	<th></th>
-	<th></th>
+	<th>送料</th>
+	<th>合計</th>
+	<th>請求</th>
 </tr>
 <tr>
-<td>送料<%= @order.postage %></td>
-<td></td>
-<td></td>
+<td><%= @order.postage %></td>
+<td><%= (@total_price * 1.1).round %></td>
+<td><%= @order.billing_amount %></td>
 </tr>
+</table>
 
 <div>支払い方法
-	<%= @order.payment_method %>
+	<%= @order.payment_method_i18n %>
 </div>
 <div>お届け先
 	<%= @order.postcode %><%= @order.address %><%= @order.name %>
 </div>
-<% end %>
-<% end %>

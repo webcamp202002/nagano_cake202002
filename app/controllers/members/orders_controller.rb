@@ -28,20 +28,23 @@ class Members::OrdersController <  Members::BaseController
 			@order.address = current_member.address
 			@order.name = current_member.last_name + current_member.first_name
 		elsif params[:address_select] == "address2"
-			@destination = Destination.find(params[:address_id])
+			@destination = Destination.find(params[:order][:address_id])
 			@order.postcode = @destination.postcode
 			@order.address = @destination.address
 			@order.name = @destination.name
 		else
 			params[:address_select] == "address3"
-			@address_new = Destination.new
-			if @address_new.save
-				@order.postcode = @address_new.postcode
-				@order.address = @address_new.address
-				@order.name = @address.name
-				binding.pry
-			end
+			@order.postcode =  params[:order][:destination][:postcode]
+		    @order.address =  params[:order][:destination][:address]
+			@order.name =  params[:order][:destination][:name]
 		end
+    @total_price = 0
+    @cart_products.each do |cart_product|
+
+    @total_price += (cart_product.product.unit_price * cart_product.quantity)
+    end
+
+    @order.billing_amount = ((@total_price *1.1).round) + 800
 
 	end
 	private
