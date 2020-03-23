@@ -52,8 +52,6 @@ class Members::MembersController < Members::BaseController
     end
 
 
-    def  withdraw
-    end
 
 
 
