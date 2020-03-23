@@ -1,7 +1,7 @@
 <h1>注文情報の入力</h1>
 
 <div>
-	<%= form_with(model: @order,url:members_orders_confirm_path,local:true) do |f| %>
+	<%= form_with(model:@order,url:members_orders_confirm_path,method: :get,local:true) do |f| %>
 	 <%= f.hidden_field :member_id %>
 	  <p>支払い方法</p>
 	  <label>
@@ -20,12 +20,12 @@
 	  </label>
 	  <label>
 	  <%= radio_button_tag(:address_select,:adress1,checked: "checked") %>
-	  <%= f.label(:address_select, "登録済住所から選択", value: "address1") %>
-	  <%= f.collection_select(:adress,@destination,:id,:view_postcode_and_adress_and_name) %>
+	  <%= f.label(:address_select, "登録済住所から選択", value: "address2") %>
+	  <%= f.collection_select(:address_id,@destination,:id,:view_postcode_and_adress_and_name) %>
 	  </label>
 	  <label>
 	  <%= radio_button_tag(:address_select,:adress1,checked: "checked") %>
-	  <%= f.label(:address_select, "新しいお届け先", value: "address1") %>
+	  <%= f.label(:address_select, "新しいお届け先", value: "address3") %>
 
 	  <%= f.fields_for :destination do |d| %>
 	  <div>郵便番号(ハイフンなし)</div>
