@@ -10,10 +10,11 @@
       <p>退会する場合は、「退会する」をクリックしてください。</p>
     </div>
   </div>
-  <div class=“row”>
+  <div >
     <div class=“offset-3 col-2">
-    <%= link_to “退会しない” ,member_path(current_member), class: “btn btn-outline-danger” %>
+   <%= link_to "退会しない" ,root_path(@member) %>
     </div>
+
     <div class=“offset-2 col-2”>
-    <%= link_to “退会する” , change_member_member_path(@member),method: :patch, class: “btn btn-danger” %>
+    <%= link_to "退会する" , members_members_change_path,method: :delete %>
     </div>

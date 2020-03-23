@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
 
   namespace :members do
+    get 'members/withdraw'=> 'members#withdraw'
+    patch 'members/change' => 'member#change'
+    put 'members/change' => 'member#change'
     resources :members,only: [:index,:edit,:update,:show]
     resources :cart_products,only: [:index,:create,:update,:destroy]
     resources :destinations ,only: [:show,:index,:edit,:update,:create,:destroy]
@@ -24,8 +27,7 @@ Rails.application.routes.draw do
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
   get 'orders/confirm' => 'orders#confirm'
   get 'orders/finish' => 'orders#finish'
-  get 'members/withdraw'=> 'members#withdraw'
-  patch 'members/change' => 'member#change'
+
 end
 
 namespace :admins do
