@@ -45,7 +45,7 @@ class Members::MembersController < Members::BaseController
 		redirect_to destroyed_member_session_path
 	end
 
-    def  change
+    def destroy
 
     end
 

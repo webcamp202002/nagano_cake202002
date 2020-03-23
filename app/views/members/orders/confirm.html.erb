@@ -1,0 +1,24 @@
+<h1>購入情報確認画面</h1>
+
+<%if @orders.present? %>
+<% @orders.each do |order| %>
+
+<tr>
+	<td><%= attachment_image_tag order.product, :image, style:"width:100px; bottom: 5px;" %><%= order.product.name %></td>
+	<td><%= (order.product.unit_price * 1.1).round  %></td>
+	<td>
+		<%= (order.product.quantity %></td>
+		<td><%= (order.product.unit_price * 1.10 * cart_product.quantity).to_i.to_s(:delimited) %>円 </td>
+		<div>送料<%= order.postage %></div>
+		<% end %>
+	</tr>
+	</table>
+	<div>支払い方法
+     <%= order.payment_method %>
+    </div>
+    <div>お届け先
+     <%= order.address %>
+    </div>
+	<% end %>
+	<% end %>
+	<%= link_to "注文を確定する",members_order_path%>

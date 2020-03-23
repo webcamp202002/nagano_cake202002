@@ -28,3 +28,7 @@ ja:
       sale_status:
         sale: 販売中
         sold_out: 売り切れ
+　time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"

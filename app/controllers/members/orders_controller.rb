@@ -7,34 +7,53 @@ class Members::OrdersController <  Members::BaseController
 
 	def create
 		@order = Order.new(order_params)
-	end
-
+	    @order.save
+		  redirect_to members_menber_finish_path
+    end
 	def index
-		@orders = Order.all
+		@orders = Order.where(member_id: current_membe)
 	end
 
 	def show
+		@order = Order.find(params[:id])
 	end
 
 	def confirm
 		@order = Order.new(order_params)
-		@member = current_memberber
-		@address = @member.destinations
-		if params[:address_select] == "adress1"
-
-
+		# render :new if @order.invalid?
+		if params[:address_select] == "address1"
+			@order.postcode = current_member.postcode
+			@order.address = current_member.address
+			@order.name = current_member.last_name + current_member.first_name
 		elsif
-			params[:address_select] == "adress2"
-			@cart_products = CartProduct.where(member_id: current_member)
-
+			params[:address_select] == "address2"
+			@destination = Destination.find(params[:member_id])
+			@order.postcode = @destination.postcode
+			@order.address = @destination.address
+			@order.name = @destination.name
 		else
-			params[:address_select] == "adress3"
-
+			params[:address_select] == "address3"
+			@address_new = Destination.new(distination_params)
+			@destination.member_id = current_member_id
+			if @address_new.save
+				@order.postcode = @address_new.postcode
+				@order.address = @address_new.address
+				@order.name = @address.name
+			end
 		end
+		# if @order.save
+		# 	redirect_to members_order_path(@order)
+		# else
+		# 	render 'new'
+		# end
 
 	end
 	private
 	def order_params
 		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount)
+	end
+
+	def destination_params
+		params.require(:destination).permit(:member_id, :address, :postcode, :name, :address)
 	end
 end

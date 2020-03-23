@@ -17,4 +17,5 @@ class Member < ApplicationRecord
          validates :address, presence: true
          validates :phone_number, presence: true
          enum is_withdrow: { draft: false, published: true }
+
 end

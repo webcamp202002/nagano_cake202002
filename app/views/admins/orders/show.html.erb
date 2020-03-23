@@ -1,0 +1,34 @@
+<h1>注文詳細画面</h1>
+
+<div><%= link_to, path do%>
+	<%=%><%=%>
+		<% end %>
+</div>
+<div><%= order.postcode %><%= order.address %>
+	<%= order.name %>
+</div>
+<%= form_for @order,url:members_order_product_path(@order) do |f| %>
+<div><%= f.select :order,:payment_method,Order.payment_methods.map { |k, v| [t("enums.order.payment_method.#{k}"), v] } %></div>
+<%= f.submit '更新', class: "btn-sm btn-success"%>
+<% end %>
+<table>
+	<tr>
+		<th>商品名</th>
+		<th>単価（税込）</th>
+		<th>数量</th>
+		<th>小計</th>
+		<th>制作ステータス</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td><%= @order.product.name %></td>
+		<td><%= @order.product.unit_price %></td>
+		<td><%= @order.product.quantity %></td>
+		<td><%= (
+		@order.product.unit_price * 1.10 * order.product.quantity).to_i.to_s(:delimited)%></td>
+		<%= form_for @order,url:members_order_product_path(@order) do |f| %>
+		<td><%= f.select :order_product,:product_status,OrderProduct.statuses.map { |k, v| [t("enums.order_product.status.#{k}"), v] } %></td>
+		<%= f.submit '更新', class: "btn-sm btn-success"%></td>
+		<% end %>
+	</tr>
+</table>
