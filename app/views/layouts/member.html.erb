@@ -19,28 +19,24 @@
              <%= current_member.last_name %>
              さん！
             <li class="nav-list-item"><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
-            
+
             <li class="nav-list-item"><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
-            
+
             <li class="nav-list-item"><%= link_to 'カート',  members_cart_products_path(current_member), class: "nav-link disabled" %></li>
-            
+
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
-            
+
             <% else %>
-            
             <li class="nav-list-item"><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
-           
+
             <li class="nav-list-item"><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>
-            
+
             <li class="nav-list-item"><%= link_to 'ログイン', new_member_session_path, class: "nav-link disabled" %></li>
             <% end %>
           </ul>
         </nav>
         </div>
-        
       </div>
-    
-	<!-- /header -->
 <% content_for :content do %>
   <%= yield %>
 <% end %>

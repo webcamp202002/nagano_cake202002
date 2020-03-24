@@ -1,9 +1,13 @@
-<h1>カート内一覧</h1>
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">ショッピングカート</h4>
+	</div>
+</div>
 <div class="text-right">
 	<%= link_to "カートを空にする",members_members_cart_products_destroy_all_path(@cart_product), method: :delete, data: { confirm:"Are you sure?"} , :class =>"btn btn-danger" %>
 </div>
-
-<table>
+<div class="index-container" style="width:60%; margin: 20px auto;">
+<table class="table table-bordered">
 	<tr>
 		<th>商品名</th>
 		<th>単価</th>
@@ -18,7 +22,7 @@
 		<td><%= attachment_image_tag cart_product.product, :image, style:"width:100px; bottom: 5px;" %><%= cart_product.product.name %></td>
 		<td><%= (cart_product.product.unit_price * 1.1).round  %></td>
 		<td>
-			<%= form_for cart_product,url:members_cart_product_path(cart_product) do |f| %>
+			<%= form_for cart_product,url:members_cart_product_path(cart_product) do |f| %></td>
 			<td><%= f.number_field :quantity, class: "qtty", min: 1, max: 99%>
 				<%= f.submit '更新', class: "btn-sm btn-success"%></td>
 				<%= f.hidden_field :id, :value => cart_product.id %>

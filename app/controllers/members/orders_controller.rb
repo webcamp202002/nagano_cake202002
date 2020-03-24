@@ -55,8 +55,8 @@ class Members::OrdersController <  Members::BaseController
 
 	end
 	def finish
-		
 	end
+
 	private
 	def order_params
 		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity,:product_status,:price])
