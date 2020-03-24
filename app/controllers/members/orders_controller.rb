@@ -2,15 +2,16 @@ class Members::OrdersController <  Members::BaseController
 	before_action :authenticate_member!
 	def new
 	    @order = Order.new
+	    @order_product = OrderProduct.new
 	    @address = current_member.destinations
 		@destination = Destination.where(member_id: current_member)
 	end
 
 	def create
 		@order = Order.new(order_params)
-		binding.pry
 		@order.member_id = current_member.id
 	    if @order.save
+	    	binding.pry
 	  	cart_products = current_member.cart_products
 		cart_products.destroy_all
 		  redirect_to members_orders_finish_path
@@ -27,7 +28,8 @@ class Members::OrdersController <  Members::BaseController
 	end
 
 	def confirm
-		@order = Order.new(order_params)
+		@order = Order.new
+		@order.order_products.build
 		@cart_products = current_member.cart_products
 		@order.member_id = current_member.id
 		if params[:address_select] == "address1"
@@ -59,7 +61,7 @@ class Members::OrdersController <  Members::BaseController
 
 	private
 	def order_params
-		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity,:product_status,:price])
+		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products_attributes: [:product_id, :quantity, :product_status, :price])
 	end
 
 	def destination_params
