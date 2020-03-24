@@ -2,7 +2,6 @@ class Members::OrdersController <  Members::BaseController
 	before_action :authenticate_member!
 	def new
 	    @order = Order.new
-	    @order_product = OrderProduct.new
 	    @address = current_member.destinations
 		@destination = Destination.where(member_id: current_member)
 	end
