@@ -46,8 +46,8 @@ class Members::OrdersController <  Members::BaseController
 		    @order.address =  params[:order][:destination][:address]
 			@order.name =  params[:order][:destination][:name]
 		end
+    @total_price = 0
     @cart_products.each do |cart_product|
-
     @total_price += (cart_product.product.unit_price * cart_product.quantity)
     end
 
@@ -56,7 +56,6 @@ class Members::OrdersController <  Members::BaseController
 	end
 	def finish
 	end
-    @total_price 
 
 	private
 	def order_params
