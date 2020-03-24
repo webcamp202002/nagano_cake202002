@@ -34,7 +34,7 @@
 			<% end %>
 		</table>
 		<div>合計
-			<%= (Product.all.sum(:unit_price) * 1.1). round %>
+			<%= (@total_price * 1.1).round %>
 		</div>
 
 		<div><%= link_to "買い物を続ける", members_products_path %></div>

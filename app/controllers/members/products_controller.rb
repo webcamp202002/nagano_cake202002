@@ -1,8 +1,8 @@
 class Members::ProductsController < Members::BaseController
 	def index
-		@genres = Genre.all
-
+		@genres = Genre.where(status: "draft")
 	if params[:genre_id]
+		binding.pry
 		@products = Product.where(genre_id: params[:genre_id])
 	else
 		@products = Product.all
