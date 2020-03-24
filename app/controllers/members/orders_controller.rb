@@ -10,7 +10,6 @@ class Members::OrdersController <  Members::BaseController
 		@order = Order.new(order_params)
 		@order.member_id = current_member.id
 	    if @order.save
-	    	binding.pry
 	  	cart_products = current_member.cart_products
 		cart_products.destroy_all
 		  redirect_to members_orders_finish_path
