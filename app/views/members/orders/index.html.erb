@@ -14,9 +14,9 @@
 			<%= order.address %><br>
 			<%= order.name %>
 		</td>
-		<td><%= order.product.name %></td>
-		<td><%= order.product.billing_amount %></td>
-		<td><%= order.status_i18n  %></td>
+		<td><%= order.order_products.name %></td>
+		<td><%= order.billing_amount %></td>
+		<td><%= order.order_status_i18n  %></td>
 		<td><%= link_to "表示する",members_order_path(order.id) %></td>
     </tr>
 </table>

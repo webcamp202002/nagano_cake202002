@@ -47,7 +47,6 @@ class Members::OrdersController <  Members::BaseController
 		end
     @total_price = 0
     @cart_products.each do |cart_product|
-
     @total_price += (cart_product.product.unit_price * cart_product.quantity)
     end
 
