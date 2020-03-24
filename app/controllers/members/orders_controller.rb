@@ -10,9 +10,9 @@ class Members::OrdersController <  Members::BaseController
 		@order = Order.new(order_params)
 		@order.member_id = current_member.id
 	    if @order.save
-	  	cart_products = current_member.cart_cart_products
+	  	cart_products = current_member.cart_products
 		cart_products.destroy_all
-		  redirect_to members_menber_finish_path
+		  redirect_to members_orders_finish_path
 		else
 			render 'confirm'
 		end
@@ -58,7 +58,7 @@ class Members::OrdersController <  Members::BaseController
 	end
 	private
 	def order_params
-		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity:product_status,:price])
+		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity,:product_status,:price])
 	end
 
 	def destination_params
