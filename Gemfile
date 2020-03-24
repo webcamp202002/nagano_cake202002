@@ -73,4 +73,5 @@ gem 'enum_help'
 gem 'paranoia'
 gem 'rspec-rails'
 gem 'rails-i18n', '~> 5.1'
+gem 'cocoon'
 
