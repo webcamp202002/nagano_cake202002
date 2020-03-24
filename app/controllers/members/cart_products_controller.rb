@@ -3,7 +3,11 @@ class Members::CartProductsController < Members::BaseController
 	def index
 		@cart_product = CartProduct.new
 		@cart_products = CartProduct.where(member_id: current_member)
-		
+		@total_price = 0
+    @cart_products.each do |cart_product|
+
+    @total_price += (cart_product.product.unit_price * cart_product.quantity)
+    end
 	end
 
 	def create

@@ -9,11 +9,11 @@
 				<%= f.text_field :name%>
 			</p>
 			<label>
-				<%= f.radio_button :status, :published %>
+				<%= f.radio_button :status, :draft %>
 				<%= f.label :status, "有効" %>
 			</label>
 			<label>
-				<%= f.radio_button :status, :draft %>
+				<%= f.radio_button :status, :published %>
 				<%= f.label :status, "無効" %>
 			</label>
 			<%= f.submit %>

@@ -8,8 +8,14 @@ class Members::OrdersController <  Members::BaseController
 
 	def create
 		@order = Order.new(order_params)
-	    @order.save
+		@order.member_id = current_member.id
+	    if @order.save
+	  	cart_products = current_member.cart_cart_products
+		cart_products.destroy_all
 		  redirect_to members_menber_finish_path
+		else
+			render 'confirm'
+		end
     end
 	def index
 		@orders = Order.where(member_id: current_member)
@@ -47,9 +53,12 @@ class Members::OrdersController <  Members::BaseController
     @order.billing_amount = ((@total_price *1.1).round) + 800
 
 	end
+	def finish
+		
+	end
 	private
 	def order_params
-		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount)
+		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity:product_status,:price])
 	end
 
 	def destination_params
