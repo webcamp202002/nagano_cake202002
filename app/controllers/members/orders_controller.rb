@@ -8,6 +8,7 @@ class Members::OrdersController <  Members::BaseController
 
 	def create
 		@order = Order.new(order_params)
+		binding.pry
 		@order.member_id = current_member.id
 	    if @order.save
 	  	cart_products = current_member.cart_products
