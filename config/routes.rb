@@ -32,7 +32,7 @@ end
 namespace :admins do
   get 'homes/top'
   resources :products
-  resource :order_products,only: [:update]
+  resources :order_products,only: [:update]
  resources :orders,only: [:show,:index,:update]
  resources :members,only: [:show,:index,:edit,:update]
  resources :genres,only: [:create,:index,:edit,:update]

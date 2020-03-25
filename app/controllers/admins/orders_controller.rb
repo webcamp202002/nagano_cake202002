@@ -11,26 +11,21 @@ class Admins::OrdersController < Admins::BaseController
           @total_price += (order_product.product.unit_price * order_product.quantity)
         end
 
-        @order.billing_amount = ((@total_price *1.1).round) + 800
-
 	end
 	def update
 		@order = Order.find(params[:id])
-		if @order.order_product.product_status == 2
-			@order.order_status = 2
+		if @order.order_status == "wait" && order_params[:order_status] == "confirm"
+				@order.order_products.each do |order_product|
+			         order_product.product_status = 1
+			    end
 			@order.update!(order_params)
-			redirect_to admins_order_product_path(@order)
-		elsif @order.order_product.product_status == 3
-			@order.order_status = 3
+			redirect_back(fallback_location: admins_order_path)
+		elsif @order.order_status == "preparation" && order_params[:order_status] == "finish"
 			@order.update!(order_params)
-			redirect_to admins_order_product_path(@order)
-		elsif @order.order_status == 1
-			@order.update!(order_params)
-			redirect_to admins_order_product_path(@order)
-		else
-  	    @order.update!(order_params)
-  	    redirect_back(fallback_location: admins_order_path)
-  	end
+			redirect_back(fallback_location: admins_order_path)
+  	    else
+  	    	redirect_back(fallback_location: admins_order_path)
+  	    end
   end
 	private
 	def order_params
