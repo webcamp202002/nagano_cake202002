@@ -6,6 +6,7 @@
 		<th>数量</th>
 		<th>小計</th>
 	</tr>
+	<% amount = 0 %>
 	<%if @cart_products.present? %>
 	<% @cart_products.each do |cart_product| %>
 	<tr>
@@ -27,7 +28,7 @@
 		<tr>
 			<td><%= @order.postage %></td>
 			<td><%= (@total_price * 1.1).round %></td>
-			<td><%= @order.billing_amount %></td>
+			<td><%= amount = ((@total_price * 1.1).round + @order.postage )%></td>
 		</tr>
 	</table>
 	<div>支払い方法
@@ -42,7 +43,7 @@
 	  <%= f.hidden_field :address %>
 	  <%= f.hidden_field :name %>
 	  <%= f.hidden_field :payment_method %>
-	  <%= f.hidden_field :builling_amount, :value => @order.billing_amount  %>
+	  <%= f.hidden_field :billing_amount, :value => amount.to_i  %>
 	  <%= f.hidden_field :postage %>
 	  <% @cart_products.each do |cart_product| %>
 	    <%= f.fields_for :order_products do |o| %>

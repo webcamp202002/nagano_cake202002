@@ -1,11 +1,11 @@
 ja:
   enums:
     order_product:
-      status:
+      product_status:
         not_create: 着手不可
         wait_create: 制作待ち
         create: 製作中
-        finish: 制作完
+        finish: 制作完了
     order:
       order_status:
         wait: 入金待ち
@@ -13,7 +13,7 @@ ja:
         start: 製作中
         preparation: 配送準備中
         finish: 配送完了
-    payment_method:
+      payment_method:
         card: クレジットカード
         bank: 銀行振込
     genre:

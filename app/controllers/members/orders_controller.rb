@@ -5,7 +5,6 @@ class Members::OrdersController <  Members::BaseController
 	    @address = current_member.destinations
 		@destination = Destination.where(member_id: current_member)
 	end
-
 	def create
 		@order = Order.new(order_params)
 		@order.member_id = current_member.id
@@ -23,6 +22,7 @@ class Members::OrdersController <  Members::BaseController
 
 	def show
 		@order = Order.find(params[:id])
+		@order_products = Order.where()
 	end
 
 	def confirm
@@ -49,8 +49,6 @@ class Members::OrdersController <  Members::BaseController
     @cart_products.each do |cart_product|
     @total_price += (cart_product.product.unit_price * cart_product.quantity)
     end
-
-    @order.billing_amount = ((@total_price *1.1).round) + 800
 
 	end
 	def finish
