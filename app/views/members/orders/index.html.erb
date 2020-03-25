@@ -1,8 +1,13 @@
 <style>
-th {
-	background: #dad7d7;
-}
+ th {
+ 	background: #FFAD90;
+ 	text-align: center;
+ }
+ td {
+ 	text-align: center;
+ }
 </style>
+
 
 <div class="row" style= "width: 80%; margin: 20px auto;">
 	<div  class= "col-md-9">
@@ -15,7 +20,8 @@ th {
 </div>
 <div class="container" style="position:relative;">
 	<table  class="table table-bordered ">
-		<tr>
+		<thead>
+			<tr>
 			<th>注文日</th>
 			<th>配送先</th>
 			<th>注文商品</th>
@@ -23,6 +29,8 @@ th {
 			<th>ステータス</th>
 			<th>注文詳細</th>
 		</tr>
+	</thead>
+	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
 			<td><%= l order.created_at, format: :short %></td>
@@ -37,6 +45,7 @@ th {
 				<td><%= order.order_status_i18n  %></td>
 				<td><%= link_to "表示する",members_order_path(order.id) %></td>
 		</tr>
+	</tbody>
 	</table>
 </div>
 <% end %>
