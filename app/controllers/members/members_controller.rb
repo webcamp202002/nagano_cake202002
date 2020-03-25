@@ -40,15 +40,17 @@ class Members::MembersController < Members::BaseController
 
 
 	def change
-		current_member.is_destroyed = true
+		@member = Member.find(params[:id])
+		current_member.is_withdraw = true
 		current_member.save
 		flash[:success] =  "さようなら、#{current_member.first_name}さん"
-		redirect_to destroyed_member_session_path
+		redirect_to root_path
 	end
 
     def destroy
-
     end
+
+
 
 
 
