@@ -9,7 +9,6 @@
 </div>
 
 <div class="container">
-	<form class="form-horizontal">
 		<div class="form-group">
 			<%= form_with(model:@order,url:members_orders_confirm_path,method: :get,local:true) do |f| %>
 			<%= f.hidden_field :member_id %>
@@ -57,5 +56,4 @@
 					<% end %>
 					<% end %>
 				</div>
-			</form>
 		</div>
