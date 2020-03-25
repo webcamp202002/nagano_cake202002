@@ -2,10 +2,11 @@ class Members::ProductsController < Members::BaseController
 	def index
 		@genres = Genre.where(status: "draft")
 	if params[:genre_id]
-		binding.pry
+		p "====================="
 		@products = Product.where(genre_id: params[:genre_id])
 	else
-		@products = Product.all
+		p"--------------------"
+		@products = Product.joins(:genre).where("(status = ?) AND (sale_status = ?)",false,0)
 	end
 
 	end
