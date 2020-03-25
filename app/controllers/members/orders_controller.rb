@@ -22,11 +22,10 @@ class Members::OrdersController <  Members::BaseController
 
 	def show
 		@order = Order.find(params[:id])
-		@order_products = Order.where()
 	end
 
 	def confirm
-		@order = Order.new
+		@order = Order.new(order_params)
 		@order.order_products.build
 		@cart_products = current_member.cart_products
 		@order.member_id = current_member.id
