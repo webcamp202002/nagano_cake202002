@@ -25,8 +25,6 @@ Rails.application.routes.draw do
     get 'orders/confirm' => 'orders#confirm'
     resources :orders ,only: [:new,:create,:index,:show]
   delete 'members/cart_products/destroy_all'  => 'cart_products#destroy_all'
-  get 'members/withdraw'=> 'members#withdraw'
-  patch 'members/change' => 'member#change'
 end
 
 namespace :admins do
