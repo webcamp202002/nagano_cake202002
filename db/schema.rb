@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_070124) do
   create_table "order_products", force: :cascade do |t|
     t.integer "product_id"
     t.integer "quantity"
-    t.integer "product_status", default: 1
+    t.integer "product_status", default: 0
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

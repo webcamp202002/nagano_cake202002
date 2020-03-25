@@ -10,10 +10,4 @@ class Order < ApplicationRecord
     validates :postcode, presence: true
     validates :address, presence: true
 
-    def count
-    sum = 0
-    self.order_products.each do |order_products|
-    sum += order_products.quantity
-    end
-    end
 end

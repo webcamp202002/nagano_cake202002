@@ -14,7 +14,10 @@
 			<% end %>
 		</td>
 			<td><%= order.member.last_name %><%= order.member.first_name %></td>
-			<td><%= order.count %></td>
+			<% order.order_products.each do |order_product| %>
+			<td><%= order_product.quantity %>
+		    <% end %>
+		</td>
 			<td><%= order.order_status_i18n %></td>
 		</tr>
 		<% end %>
