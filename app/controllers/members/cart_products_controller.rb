@@ -3,7 +3,11 @@ class Members::CartProductsController < Members::BaseController
 	def index
 		@cart_product = CartProduct.new
 		@cart_products = CartProduct.where(member_id: current_member)
-		
+		@total_price = 0
+    @cart_products.each do |cart_product|
+
+    @total_price += (cart_product.product.unit_price * cart_product.quantity)
+    end
 	end
 
 	def create
@@ -13,7 +17,6 @@ class Members::CartProductsController < Members::BaseController
 		redirect_to members_cart_products_path(@cart_product)
 	end
 
-  # カート詳細画面から、「更新」を押した時のアクション
     def update
       @cart_product = CartProduct.find(params[:id])
   	  @cart_product.update!(cart_product_params)
@@ -21,7 +24,6 @@ class Members::CartProductsController < Members::BaseController
   	  redirect_back(fallback_location: members_cart_products_path)
   	end
 
-# カート詳細画面から、「削除」を押した時のアクション
     def destroy
       @cart_product = CartProduct.find(params[:id])
 	  @cart_product.destroy

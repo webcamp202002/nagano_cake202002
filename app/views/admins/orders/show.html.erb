@@ -1,15 +1,22 @@
 <h1>注文詳細画面</h1>
 
-<div><%= link_to, path do%>
-	<%=%><%=%>
+<div>購入者
+	<%= link_to(admins_members_path(@order)) do %>
+	<%= @order.member.last_name %><%=  @order.member.first_name %>
 		<% end %>
 </div>
-<div><%= order.postcode %><%= order.address %>
-	<%= order.name %>
+<div>配送先
+	<%= @order.postcode %><%= @order.address %>
+	<%= @order.name %>
 </div>
-<%= form_for @order,url:members_order_product_path(@order) do |f| %>
-<div><%= f.select :order,:payment_method,Order.payment_methods.map { |k, v| [t("enums.order.payment_method.#{k}"), v] } %></div>
-<%= f.submit '更新', class: "btn-sm btn-success"%>
+<div>支払方法
+	<%= @order.payment_method %>
+</div>
+<%= form_for @order,url:admins_order_path(@order) do |f| %>
+<div>注文ステータス
+	<%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [Order.order_statuses_i18n[k], k]} %>
+	<%= f.submit '更新', class: "btn-sm btn-success"%>
+</div>
 <% end %>
 <table>
 	<tr>
@@ -20,15 +27,29 @@
 		<th>制作ステータス</th>
 		<th></th>
 	</tr>
+	<% @order.order_products.each do|order_product| %>
 	<tr>
-		<td><%= @order.product.name %></td>
-		<td><%= @order.product.unit_price %></td>
-		<td><%= @order.product.quantity %></td>
+		<td><%= order_product.product.name %></td>
+		<td><%= order_product.product.unit_price %></td>
+		<td><%= order_product.quantity %></td>
 		<td><%= (
-		@order.product.unit_price * 1.10 * order.product.quantity).to_i.to_s(:delimited)%></td>
-		<%= form_for @order,url:members_order_product_path(@order) do |f| %>
-		<td><%= f.select :order_product,:product_status,OrderProduct.statuses.map { |k, v| [t("enums.order_product.status.#{k}"), v] } %></td>
-		<%= f.submit '更新', class: "btn-sm btn-success"%></td>
+		order_product.product.unit_price * 1.10 * order_product.quantity).to_i.to_s(:delimited)%></td>
+		<td>
+		<%= form_for order_product,url: admins_order_product_path(order_product) do |o| %>
+			<%= o.select :product_status, OrderProduct.product_statuses_i18n.keys.map {|k| [OrderProduct.product_statuses_i18n[k], k]} %>
+
+		<%= o.submit '更新', class: "btn-sm btn-success"%>
+		<% end %>
+		</td>
 		<% end %>
 	</tr>
 </table>
+<div>商品合計
+	<%= (@total_price * 1.1).round %>
+</div>
+<div>送料
+	<%= @order.postage %>
+</div>
+<div>請求金額合計
+	<%= @order.billing_amount %>
+</div>

@@ -1,25 +1,26 @@
 <div class="row" style= "width: 80%; margin: 20px auto;">
-  <div class="form-horizontal">
-      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先編集</h4>
-    </div>
-  </div>	<div class="edit-container" style="width:50%; margin: 20px auto;">
-
-		<%= form_for(@destination, url: members_destination_path, local: true) do |f| %>
-		<table class="table table-bordered">
-	<tr>
-		<td>郵便番号(ハイフンなし)</td>
-		<td><%= f.text_field :postcode, style: "width: 30%;" %></td>
-	</tr>
-	<tr>
-		<td>住所</td>
-		<td><%= f.text_field :address, style: "width: 100%;" %></td>
-	</tr>
-	<tr>
-		<td>宛名</td>
-		<td><%= f.text_field :name, style: "width: 30%;" %></td>
-	</tr>
-</table>
-<div class="text-right">
-<%= f.submit class: "btn btn-primary col-xs-12" %>
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先編集</h4>
+	</div>
 </div>
-<% end %>
+<div class="edit-container" style="width:50%; margin: 20px auto;">
+
+	<%= form_for(@destination, url: members_destination_path, local: true) do |f| %>
+	<table class="table table-bordered">
+		<tr>
+			<td>郵便番号(ハイフンなし)</td>
+			<td><%= f.text_field :postcode, style: "width: 30%;" %></td>
+		</tr>
+		<tr>
+			<td>住所</td>
+			<td><%= f.text_field :address, style: "width: 100%;" %></td>
+		</tr>
+		<tr>
+			<td>宛名</td>
+			<td><%= f.text_field :name, style: "width: 30%;" %></td>
+		</tr>
+	</table>
+	<div class="text-right">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+	<% end %>

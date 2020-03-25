@@ -1,23 +1,42 @@
-<% @orders.each do |order| %>
-<table>
-	<tr>
-		<th>注文日</th>
-		<th>配送先</th>
-		<th>注文商品</th>
-		<th>支払い金額</th>
-		<th>ステータス</th>
-		<th>注文詳細</th>
-	</tr>
-	<tr>
-		<td><%= l order.created_at, format: :short %></td>
-		<td><%= order.postcode %><br>
-			<%= order.address %><br>
-			<%= order.name %>
-		</td>
-		<td><%= order.product.name %></td>
-		<td><%= order.product.billing_amount %></td>
-		<td><%= order.status_i18n  %></td>
-		<td><%= link_to "表示する",members_order_path(order.id) %></td>
-    </tr>
-</table>
+<style>
+th {
+	background: #dad7d7;
+}
+</style>
+
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div  class= "col-md-9">
+		<div class="row" style= "width: 100%; margin: 20px auto;">
+			<div class="form-horizontal">
+				<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴一覧</h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="position:relative;">
+	<table  class="table table-bordered ">
+		<tr>
+			<th>注文日</th>
+			<th>配送先</th>
+			<th>注文商品</th>
+			<th>支払い金額</th>
+			<th>ステータス</th>
+			<th>注文詳細</th>
+		</tr>
+		<% @orders.each do |order| %>
+		<tr>
+			<td><%= l order.created_at, format: :short %></td>
+			<td>〒<%= order.postcode %><br>
+				<%= order.address %><br>
+				<%= order.name %>
+			</td>
+			<td><% order.order_products.each do |order_product| %>
+				<%= order_product.product.name %></td>
+				<% end %>
+				<td><%= order.billing_amount %>円</td>
+				<td><%= order.order_status_i18n  %></td>
+				<td><%= link_to "表示する",members_order_path(order.id) %></td>
+		</tr>
+	</table>
+</div>
 <% end %>
