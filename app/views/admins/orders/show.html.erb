@@ -34,15 +34,13 @@
 		<td><%= order_product.quantity %></td>
 		<td><%= (
 		order_product.product.unit_price * 1.10 * order_product.quantity).to_i.to_s(:delimited)%></td>
-		<%= form_for @order,url: admins_order_path(@order) do |o| %>
-		<%= o.fields_for :order_product do |i| %>
 		<td>
-			<%= i.select :product_status, OrderProduct.product_statuses_i18n.keys.map {|k| [OrderProduct.product_statuses_i18n[k], k]} %>
+		<%= form_for order_product,url: admins_order_product_path(order_product) do |o| %>
+			<%= o.select :product_status, OrderProduct.product_statuses_i18n.keys.map {|k| [OrderProduct.product_statuses_i18n[k], k]} %>
 
 		<%= o.submit '更新', class: "btn-sm btn-success"%>
+		<% end %>
 		</td>
-		<% end %>
-		<% end %>
 		<% end %>
 	</tr>
 </table>
