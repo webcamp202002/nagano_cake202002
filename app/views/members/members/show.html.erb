@@ -1,39 +1,52 @@
-<div class="show-container" style="width:50%; margin: 20px auto;">
-	<h4 style=“margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;“>マイページ</h4>
+<div class="row" style= "width: 80%; margin: 20px auto;">
+  <div class="form-horizontal">
+      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">マイページ</h4>
+    </div>
+  </div>
+
+  <div class="show-container" style="width:50%; margin: 20px auto;">
 	<table class="table table-bordered">
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>氏名</th>
-				<td><%= current_member.last_name %> <%= current_member.first_name %></td>
-			</tr>
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>フリガナ</th>
-				<td><%= current_member.kana_last_name %> <%= current_member.kana_last_name %></td>
-			</tr>
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>郵便番号</th>
-				<td>〒 <%= current_member.postcode %></td>
-			</tr>
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>住所</th>
-				<td><%= current_member.address %></td>
-			</tr>
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>電話番号</th>
-				<td><%= current_member.phone_number %></td>
-			</tr>
-			<tr>
-				<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>メールアドレス</th>
-				<td style=“border-bottom: 1px solid #DAD7D7;“><%= current_member.email %></td>
-			</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>氏名</th>
+			<td><%= current_member.last_name %> <%= current_member.first_name %></td>
+		</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>フリガナ</th>
+			<td><%= current_member.kana_last_name %> <%= current_member.kana_last_name %></td>
+		</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>郵便番号</th>
+			<td>〒 <%= current_member.postcode %></td>
+		</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>住所</th>
+			<td><%= current_member.address %></td>
+		</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>電話番号</th>
+			<td><%= current_member.phone_number %></td>
+		</tr>
+		<tr>
+			<th style=“background-color: #DAD7D7; border-bottom: 1px solid #fff;“>メールアドレス</th>
+			<td style=“border-bottom: 1px solid #DAD7D7;“><%= current_member.email %></td>
+		</tr>
 	</table>
 
-  <%= link_to '登録情報を編集する', edit_members_member_path %>
-  <%= link_to 'パスワードを編集する', edit_member_password_path %>
-  <hr>
-	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h4>
-		<%= link_to members_destinations_path do %>
+	<table>
+		<td><h5>登録情報</h5>
+			<%= link_to '編集する', edit_members_member_path, class: "btn btn-outline-primary" %>
+			<%= link_to 'パスワードを変更する', edit_member_password_path, class: "btn btn-outline-primary" %></td>
+	</table>
+
+		<hr>
+		<th><h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h4>
+			<%= link_to members_destinations_path do %>
 			一覧を見る<span class="glyphicon glyphicon-chevron-right"></span>
-		<% end %>
-
-
+			<% end %>
+			<hr>
+			<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴</h4>
+			<%= link_to members_orders_path do %>
+			一覧を見る<span class="glyphicon glyphicon-chevron-right"></span>
+			<% end %>
+		</th>
 </div>

@@ -18,11 +18,7 @@
 //= require_tree .
 //= require bootstrap
 
-$(document).ready(function () {
-	$('.jquery').on('click', function(){
-		$(this).css('color','red');
-	});
-});
+
 
 $(document).ready(function () {
   $("#theTarget").skippr({
@@ -48,3 +44,4 @@ $(document).ready(function () {
       hidePrevious : false
   });
 });
+

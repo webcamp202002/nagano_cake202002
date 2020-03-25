@@ -48,6 +48,7 @@ class Members::MembersController < Members::BaseController
 	end
 
 
+
     def destroy
     end
 

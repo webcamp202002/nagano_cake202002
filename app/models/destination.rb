@@ -6,6 +6,6 @@ class Destination < ApplicationRecord
     validates :name, presence: true
 
     def view_postcode_and_adress_and_name
-    self.postcode + self.address + self.name
+    self.postcode + " " + self.address + " " + self.name
     end
 end

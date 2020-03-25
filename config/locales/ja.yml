@@ -18,8 +18,8 @@ ja:
         bank: 銀行振込
     genre:
       status:
-        published: 有効
-        draft: 無効
+        published: 無効
+        draft: 有効
     member:
       is_withdrow:
         published: 有効
@@ -28,3 +28,7 @@ ja:
       sale_status:
         sale: 販売中
         sold_out: 売り切れ
+　time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"

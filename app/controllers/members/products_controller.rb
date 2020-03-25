@@ -1,8 +1,8 @@
 class Members::ProductsController < Members::BaseController
 	def index
-		@genres = Genre.all
-
+		@genres = Genre.where(status: "draft")
 	if params[:genre_id]
+		binding.pry
 		@products = Product.where(genre_id: params[:genre_id])
 	else
 		@products = Product.all
@@ -21,7 +21,4 @@ private
 def product_params
     params.require(:product).permit(:name, :unit_price, :sale_status, :image,:genre_id,:introduction)
   end
-  def find_cart
-   session[:cart] ||= Cart.new
- end
 end
