@@ -17,7 +17,6 @@ class Members::CartProductsController < Members::BaseController
 		redirect_to members_cart_products_path(@cart_product)
 	end
 
-  # カート詳細画面から、「更新」を押した時のアクション
     def update
       @cart_product = CartProduct.find(params[:id])
   	  @cart_product.update!(cart_product_params)
@@ -25,7 +24,6 @@ class Members::CartProductsController < Members::BaseController
   	  redirect_back(fallback_location: members_cart_products_path)
   	end
 
-# カート詳細画面から、「削除」を押した時のアクション
     def destroy
       @cart_product = CartProduct.find(params[:id])
 	  @cart_product.destroy

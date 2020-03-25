@@ -30,13 +30,3 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 en:
   hello: "Hello world"
-  # enums:
-  #   member:
-  #     is_withdrow:
-  #       validity: 有効
-  #       invalid: 無効
-  # enums:
-  #   genre:
-  #     status:
-  #       validity: 有効
-  #       invalid: 無効

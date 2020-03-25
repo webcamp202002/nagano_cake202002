@@ -29,7 +29,7 @@ class Members::MembersController < Members::BaseController
 	def update
 		if current_member.update(member_params)
 			flash[:success] =  "更新に成功しました"
-			redirect_to member_path(current_member)
+			redirect_to members_member_path(current_member)
 		else
 			flash[:warning] = "入力内容を確認してください"
 			render :edit

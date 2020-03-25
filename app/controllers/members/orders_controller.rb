@@ -5,14 +5,13 @@ class Members::OrdersController <  Members::BaseController
 	    @address = current_member.destinations
 		@destination = Destination.where(member_id: current_member)
 	end
-
 	def create
 		@order = Order.new(order_params)
 		@order.member_id = current_member.id
 	    if @order.save
-	  	cart_products = current_member.cart_cart_products
+	  	cart_products = current_member.cart_products
 		cart_products.destroy_all
-		  redirect_to members_menber_finish_path
+		  redirect_to members_orders_finish_path
 		else
 			render 'confirm'
 		end
@@ -23,10 +22,12 @@ class Members::OrdersController <  Members::BaseController
 
 	def show
 		@order = Order.find(params[:id])
+		@order_products = Order.where()
 	end
 
 	def confirm
-		@order = Order.new(order_params)
+		@order = Order.new
+		@order.order_products.build
 		@cart_products = current_member.cart_products
 		@order.member_id = current_member.id
 		if params[:address_select] == "address1"
@@ -46,19 +47,16 @@ class Members::OrdersController <  Members::BaseController
 		end
     @total_price = 0
     @cart_products.each do |cart_product|
-
     @total_price += (cart_product.product.unit_price * cart_product.quantity)
     end
 
-    @order.billing_amount = ((@total_price *1.1).round) + 800
-
 	end
 	def finish
-		
 	end
+
 	private
 	def order_params
-		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products:[:product_id,:quantity:product_status,:price])
+		params.require(:order).permit(:member_id,:order_status,:payment_method,:address,:postcode,:name,:postage,:billing_amount,order_products_attributes: [:product_id, :quantity, :product_status, :price])
 	end
 
 	def destination_params
