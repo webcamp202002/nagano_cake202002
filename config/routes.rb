@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   namespace :members do
     get 'members/withdraw'=> 'members#withdraw'
-    patch 'members/change' => 'member#change'
-    put 'members/change' => 'member#change'
+    patch 'members/change' => 'members#change'
+    put 'members/change' => 'members#change'
     resources :members,only: [:index,:edit,:update,:show]
     resources :cart_products,only: [:index,:create,:update,:destroy]
     resources :destinations ,only: [:show,:index,:edit,:update,:create,:destroy]
