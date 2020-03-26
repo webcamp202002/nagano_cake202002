@@ -8,6 +8,8 @@ class Admins::SearchesController < Admins::BaseController
 		binding.pry
 	end
 	def search_for(how, model, content)
+		p '---------'
+		p how
 		case how
 		when 'match'
 			match(model, content)
@@ -22,8 +24,7 @@ class Admins::SearchesController < Admins::BaseController
 
 	def match(model, content)
 		if model == 'member'
-			# Member.where("#{connection.concat('last_name', 'first_name')} LIKE ?", "%#{content}%") }
-			Member.where(last_name: content , first_name: content)
+			Member.where("lower(SELECT CONCAT_WS(",", lower(first_name), lower(last_name)) like ?","#{content}")
 		elsif model == 'product'
 			Product.where(name: content)
 		end
@@ -31,24 +32,24 @@ class Admins::SearchesController < Admins::BaseController
 
 	def forward(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ? OR concat_ws(' ', lower(first_name), lower(last_name)) like ?","#{content}%","#{content}%","#{content}%")
+			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","#{content}%","#{content}%")
 		elsif model == 'product'
 			Product.where("name LIKE ?", "#{content}%")
 		end
 	end
 	def backward(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ? OR concat_ws(' ', lower(first_name), lower(last_name)) like ?","#{content}%","#{content}%","#{content}%")
+			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","%#{content}","%#{content}")
 		elsif model == 'product'
-			Product.where("name LIKE ?", "#{content}%")
+			Product.where("name LIKE ?", "%#{content}")
 		end
 	end
 
 	def partical(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ? OR concat_ws(' ', lower(first_name), lower(last_name)) like ?","#{content}%","#{content}%","#{content}%")
+			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","%#{content}%","%#{content}%")
 		elsif model == 'product'
-			Product.where("name LIKE ?", "#{content}%")
+			Product.where("name LIKE ?", "%#{content}%")
 		end
 	end
 end

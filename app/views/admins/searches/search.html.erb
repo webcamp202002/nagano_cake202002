@@ -7,10 +7,10 @@
 	</tr>
 	<tr>
 		<td>
-			<%= data.name %>
+			<%= data.last_name %><%= data.first_name %>
 		</td>
 	</tr>
-	<td><%= link_to "詳細へ", data %></td>
+	<td><%= link_to "詳細へ", admins_member_path(data) %></td>
 </table>
 <% elsif @model == "product" %>
 	<table class='table'>
