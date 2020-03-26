@@ -33,24 +33,13 @@
 			購入には会員登録が必要になります。</p>
 			<h2>オススメ商品</h2>
 			<table class="table">
-				<tr>
-					<th><div class="picture1"></div></th>
-					<th><div class="picture2"></div></th>
-					<th><div class="picture3"></div></th>
-					<th><div class="picture4"></div></th>
-				</tr>
-				<tr>
-					<th>カップ</th>
-					<th>商品名</th>
-					<th>商品名</th>
-					<th>商品名</th>
-				</tr>
-				<tr>
-					<th>¥値段</th>
-					<th>¥値段</th>
-					<th>¥値段</th>
-					<th>¥値段</th>
-				</tr>
+				<% @products.each do |product| %>
+				<div>
+				<p><%= attachment_image_tag(product, :image, size: "50x50") %></p>
+				<p><%= product.name %></p>
+				<p><%= product.unit_price %></p>
+			    </div>
+				<% end %>
 			</table>
 			<%= link_to "もっと見る＞",new_member_session_path %>
 			<%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, method: :post %> 

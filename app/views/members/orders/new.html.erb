@@ -11,7 +11,7 @@
 
 <div class="container">
 	<table  class="table table-bordered ">
-	<div class="form-group">
+		<div class="form-group">
 			<%= form_with(model:@order,url:members_orders_confirm_path,method: :get,local:true) do |f| %>
 			<%= f.hidden_field :member_id %>
 			<h3>☆支払い方法</h3>
@@ -58,5 +58,5 @@
 				<% end %>
 				<% end %>
 			</div>
-	</table>
-</div>
+		</table>
+	</div>
