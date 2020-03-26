@@ -1,52 +1,59 @@
 <div class="row" style= "width: 80%; margin: 20px auto;">
 	<%= form_for(@product,url:admins_product_path, local: true) do |f| %>
 	<div class="form-horizontal">
-      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品編集登録画面</h4>
-	<div class="form-group">
-        <label class="col-sm-2"></label>
-        <div class="col-sm-10">
-	<%= attachment_image_tag(@product, :image, :fill, 400, 200,) %>
-	<%= f.attachment_field :image %>
-	</div>
-</div>
-
-	<div class="form-group">
-        <label class="col-sm-2 control-label">商品名</label>
-        <div class="col-sm-6">
-		<%= f.text_field :name, class:"form-control", id:"InputName", autocomplete: "name" %>
-	</div>
-</div>
-	<div class="form-group">
-        <label class="col-sm-3 control-label">商品説明</label>
-        <div class="col-sm-7">
-		<%= f.text_area :introduction, class:"form-control", id:"InputIntroduction", autocomplete: "introduction, rows: 6" %>
-        </div>
-      </div>
-
-	<div class="form-group">
-        <label class="col-sm-3 control-label">ジャンル</label>
-        <div class="col-sm-7">
-		<%= f.collection_select :genre_id, Genre.all,:id, :name  %>
-	</div>
-</div>
-
-	<div class="form-group">
-        <label class="col-sm-3 control-label">税抜価格</label>
-        <div class="col-sm-6">
-		<%= f.text_field :unit_price, autofocus: true, autocomplete: "price" %>
-	</div>
-</div>
-
-	<div class="form-group">
-        <label class="col-sm-4 control-label">販売ステータス</label>
-        <div class="col-sm-6">
-        <%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
-      </div>
+    <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品編集画面</h4>
   </div>
+</div>
 
-	<div class="actions">
-        <label class="col-sm-2 control-label"></label>
-        <%= f.submit "登録する", class:"btn btn-primary btn-md" %>
+
+<div class="container">
+  <div class="row" style="width: 80%; margin: 50px auto;">
+    <div class= "col-md-6">
+      <div class="form-group">
+       <label class="col-sm-2"></label>
+       <div class="col-sm-10">
+        <%= attachment_image_tag(@product, :image, :fill, 400, 200,) %>
+        <%= f.attachment_field :image %>
       </div>
     </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label class="col-sm-8 control-label">商品名</label>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class:"form-control", id:"InputName", autocomplete: "name" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">商品説明</label>
+      <div class="col-sm-7">
+        <%= f.text_area :introduction, class:"form-control", id:"InputIntroduction", autocomplete: "introduction, rows: 6" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ジャンル</label>
+      <div class="col-sm-7">
+        <%= f.collection_select :genre_id, Genre.all,:id, :name  %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">税抜価格</label>
+      <div class="col-sm-6">
+        <%= f.text_field :unit_price, autofocus: true, autocomplete: "price" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-4 control-label">販売ステータス</label>
+      <div class="col-sm-6">
+        <%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
+      </div>
+      <div class="text-right">
+        <label class="col-sm-2 control-label"></label>
+        <%= f.submit "変更を保存", class:"btn btn-primary btn-md" %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
 <% end %>
