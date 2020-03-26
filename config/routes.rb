@@ -29,6 +29,8 @@ end
 
 namespace :admins do
   get 'homes/top'
+  get '/search' => 'searches#search'
+  resources :searches,only: [:index]
   resources :products
   resources :order_products,only: [:update]
  resources :orders,only: [:show,:index,:update]

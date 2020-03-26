@@ -28,8 +28,10 @@
 		</tr>
 </table>
 </div>
-
-<div><%= link_to "編集する" ,edit_admins_product_path(@product) %></div>
+<div>
+<%= link_to "戻る",admins_products_path,class: "btn btn-success col-xs-12"%>
+</div>
+<div><%= link_to "編集する" ,edit_admins_product_path(@product),class: "btn btn-primary col-xs-12" %></div>
 <div><%= link_to "削除する",members_product_path(@product.id), method: :delete, data: { confirm:"Are you sure?"} , :class =>"btn btn-danger" %></div>
 </div>
 </div>

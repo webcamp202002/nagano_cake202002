@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-  	if current_member.is_withdrow == "published"
-      sign_out(current_member)
-    end
     case resource
   	when Admin
   		admins_homes_top_path
   	when Member
+      if current_member.is_withdrow == "published"
+      sign_out(current_member)
+    end
   		members_products_path
   	end
 
