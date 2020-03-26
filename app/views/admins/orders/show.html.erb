@@ -1,55 +1,92 @@
-<h1>注文詳細画面</h1>
+<style>
+.table{
+	width: 100%;
+}
 
-<div>購入者
-	<%= link_to(admins_member_path(@order)) do %>
-	<%= @order.member.last_name %><%=  @order.member.first_name %>
-		<% end %>
-</div>
-<div>配送先
-	<%= @order.postcode %><%= @order.address %>
-	<%= @order.name %>
-</div>
-<div>支払方法
-	<%= @order.payment_method_i18n %>
-</div>
-<%= form_for @order,url:admins_order_path(@order) do |f| %>
-<div>注文ステータス
-	<%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [Order.order_statuses_i18n[k], k]} %>
-	<%= f.submit '更新', class: "btn-sm btn-success"%>
-</div>
-<% end %>
-<table>
-	<tr>
-		<th>商品名</th>
-		<th>単価（税込）</th>
-		<th>数量</th>
-		<th>小計</th>
-		<th>制作ステータス</th>
-		<th></th>
-	</tr>
-	<% @order.order_products.each do|order_product| %>
-	<tr>
-		<td><%= order_product.product.name %></td>
-		<td><%= order_product.product.unit_price %></td>
-		<td><%= order_product.quantity %></td>
-		<td><%= (
-		order_product.product.unit_price * 1.10 * order_product.quantity).to_i.to_s(:delimited)%></td>
-		<td>
-		<%= form_for order_product,url: admins_order_product_path(order_product) do |o| %>
-			<%= o.select :product_status, OrderProduct.product_statuses_i18n.keys.map {|k| [OrderProduct.product_statuses_i18n[k], k]} %>
+th{
+	width: 25%;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
+</style>
 
-		<%= o.submit '更新', class: "btn-sm btn-success"%>
-		<% end %>
-		</td>
-		<% end %>
-	</tr>
-</table>
-<div>商品合計
-	<%= (@total_price * 1.1).round %>
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文詳細画面</h4>
+	</div>
 </div>
-<div>送料
-	<%= @order.postage %>
-</div>
-<div>請求金額合計
-	<%= @order.billing_amount %>
-</div>
+
+<div class="container">
+	<div class="row" style= "width: 80%; margin: 20px auto;">
+		<table>
+			<tr>
+				<th>購入者</th>
+				<th><%= link_to(admins_member_path(@order)) do %>
+					<%= @order.member.last_name %><%=  @order.member.first_name %></th>
+					<% end %>
+				</tr>
+				<tr>
+					<th>配送先</th>
+					<th>〒<%= @order.postcode %><br>
+						<%= @order.address %><br>
+						<%= @order.name %></th>
+					</tr>
+					<tr>
+						<th>支払方法</th>
+						<th><%= @order.payment_method_i18n %></th>
+					</tr>
+					<tr>
+						<%= form_for @order,url:admins_order_path(@order) do |f| %>
+						<th>注文ステータス</th>
+						<th><%= f.select :order_status, Order.order_statuses_i18n.keys.map {|k| [Order.order_statuses_i18n[k], k]} %>
+							<%= f.submit '更新', class: "btn-outline-success w-auto"%></th>
+						</tr>
+						<% end %>
+					</div>
+				</table>
+			</div>
+		</div>
+
+		<div class="row" style= "width: 70%; margin: 10px auto;">
+			<div class="col-md-8">
+				<table class="table">
+					<tr>
+						<th>商品名</th>
+						<th>単価(税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>制作ステータス</th></h5>
+					</tr>
+					<% @order.order_products.each do|order_product| %>
+					<tr>
+						<td><%= order_product.product.name %></td>
+						<td><%= order_product.product.unit_price %></td>
+						<td><%= order_product.quantity %></td>
+						<td><%= (
+						order_product.product.unit_price * 1.10 * order_product.quantity).to_i.to_s(:delimited)%></td>
+						<td><%= form_for order_product,url: admins_order_product_path(order_product) do |o| %>
+							<%= o.select :product_status, OrderProduct.product_statuses_i18n.keys.map {|k| [OrderProduct.product_statuses_i18n[k], k]} %>
+							<%= o.submit '更新', class: "btn-outline-success w-100"%>
+							<% end %>
+						<% end %>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<table>
+					<tr>
+						<th>商品合計</th>
+						<th><%= (@total_price * 1.1).round %>円</th>
+					</tr>
+					<tr>
+						<th>送料</th>
+						<th><%= @order.postage %>円</th>
+					</tr>
+					<tr>
+						<th>請求金額合計</th>
+						<th><%= @order.billing_amount %>円</th>
+					</tr>
+				</table>
+			</div>
+		</div>

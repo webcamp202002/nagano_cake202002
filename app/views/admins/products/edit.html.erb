@@ -12,7 +12,7 @@
       <div class="form-group">
        <label class="col-sm-2"></label>
        <div class="col-sm-10">
-        <%= attachment_image_tag(@product, :image, :fill, 400, 200,) %>
+        <%= attachment_image_tag(@product, :image, size: "370x250") %>
         <%= f.attachment_field :image %>
       </div>
     </div>
