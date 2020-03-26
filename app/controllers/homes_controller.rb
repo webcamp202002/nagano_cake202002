@@ -3,7 +3,7 @@ class HomesController < ApplicationController
 	def top
 
 		@genres =Genre.where(status: "draft")
-		@products = Product.all
+	    @products = Product.joins(:genre).where("(status = ?) AND (sale_status = ?)",false,0)
 
 	end
 
