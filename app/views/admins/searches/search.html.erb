@@ -16,12 +16,20 @@
 	<table class='table'>
 	<tr>
 		<th>商品名</th>
+		<th>ジャンル</th>
+		<th>イメージ</th>
 	</tr>
 	<tr>
 		<td>
 			<%= data.name %>
 		</td>
-		<td><%= link_to "詳細へ", data %></td>
+		<td>
+			<%= data.genre.name  %>
+		</td>
+		<td>
+		<%= attachment_image_tag(data, :image, size: "50x50") %>
+	    </td>
+		<td><%= link_to "詳細へ", admins_product_path(data) %></td>
 	</tr>
 </table>
 <% end %>
