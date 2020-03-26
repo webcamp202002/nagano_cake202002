@@ -33,7 +33,7 @@
 			購入には会員登録が必要になります。</p>
 			<h2>オススメ商品</h2>
 			<table class="table">
-				<% @products.each do |product| %>
+				<% @products.shuffle.first(4).each do |product| %>
 				<div>
 				<p><%= attachment_image_tag(product, :image, size: "50x50") %></p>
 				<p><%= product.name %></p>
