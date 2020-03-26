@@ -1,10 +1,13 @@
 <div class="row" style= "width: 80%; margin: 20px auto;">
-  <div class="form-horizontal">
-      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品新規登録画面</h4>
-    </div>
-  </div>
-  <%= form_for(@product,url:admins_products_path) do |f| %>
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品新規登録画面</h4>
+	</div>
+</div>
+
+
+<%= form_for(@product,url:admins_products_path) do |f| %>
 <% if @product.errors.any? %>
+
 	<h3><%= @product.errors.count %>error occurrence</h3>
 	<ul>
 		<% @product.errors.full_messages.each do |message| %>
@@ -13,54 +16,65 @@
 	</ul>
 <% end %>
 
-<div class="col-md-10">
-<div class="form-group">
-	<div class="col-sm-2">
-	<%= f.label :image %>
-	<%= f.attachment_field :image %>
-	</div>
-</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>
+					<%= f.label :画像選択 %>
+					<%= f.attachment_field :image %>
+				</label>
+			</div>
 
-<div class="form-group">
-	<div class="col-sm-2">
-		<%= f.label :name %>
-		<%= f.text_field :name, class:"form-control", id:"InputName", autocomplete: "name" %>
+			<div class="form-group">
+				<label>
+					<%= f.label :商品名 %>
+					<%= f.text_field :name, class:"form-control", id:"InputName", autocomplete: "name" %>
+				</label>
+			</div>
+
+			<div class="form-group">
+				<label>
+					<%= f.label :商品説明 %>
+					<%= f.text_area :introduction, class:"form-control", id:"InputIntroduction", autocomplete: "introduction", rows: 6 %>
+				</label>
+			</div>
+		</div>
 	</div>
-</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>
+					<%= f.label :ジャンル %>
+					<%= f.collection_select :genre_id, Genre.all,:id, :name  %>
+				</label>
+			</div>
+
+
+			<div class="form-group">
+				<label>
+					<%= f.label :税抜価格 %><br>
+					<%= f.text_field :unit_price, class:"form-control"%>
+				</label>
+			</div>
+
+			<div class="form-group">
+				<label>
+					<%= f.label :販売ステータス %>
+					<%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
+				</label>
+			</div>
+		</div>
+	</div>
 
 	<div class="form-group">
-		<div class="col-sm-2">
-		<%= f.label :introduction %>
-		<%= f.text_area :introduction, class:"form-control", id:"InputIntroduction", autocomplete: "introduction", rows: 6 %>
-	</div>
-</div>
-
-	<div class="form-group">
-		<div class="col-sm-2">
-		<%= f.label :genre_id %>
-		<%= f.collection_select :genre_id, Genre.all,:id, :name  %>
-	</div>
-</div>
-
-
-	<div class="form-group">
-		<div class="col-sm-2">
-		<%= f.label :unit_price %>
-		<%= f.text_area :unit_price %>
-	</div>
-</div>
-
-	<div class="form-group">
-		<div class="col-sm-2">
-        <%= f.select :sale_status, Product.sale_statuses_i18n.keys.map { |k| [Product.sale_statuses_i18n[k], k]} %>
-      </div>
-  </div>
-
-	<div class="form-group">
-		<%= f.submit class: "btn btn-primary col-xs-12" %>
-	</div>
+		<label>
+			<%= f.submit class: "btn btn-primary col-xs-12" %>
+		</div>
+	</label>
 	<div>
 		<%= link_to "戻る",admins_products_path,class: "btn btn-success col-xs-12"%>
+		<% end %>
 	</div>
 </div>
-<% end %>
+
