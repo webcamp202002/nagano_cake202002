@@ -1,7 +1,7 @@
 <h1>注文詳細画面</h1>
 
 <div>購入者
-	<%= link_to(admins_members_path(@order)) do %>
+	<%= link_to(admins_member_path(@order)) do %>
 	<%= @order.member.last_name %><%=  @order.member.first_name %>
 		<% end %>
 </div>
@@ -10,7 +10,7 @@
 	<%= @order.name %>
 </div>
 <div>支払方法
-	<%= @order.payment_method %>
+	<%= @order.payment_method_i18n %>
 </div>
 <%= form_for @order,url:admins_order_path(@order) do |f| %>
 <div>注文ステータス
