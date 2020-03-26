@@ -1,26 +1,23 @@
-<div>
-	<div>
-		<hi>ジャンル編集画面</hi>
-		<p>ジャンル</p>
-		<div>
-			<%= form_for(@genre,url:admins_genre_path, local: true) do |f| %>
-			<p>ジャンル
-				<%= f.label :name %>
-				<%= f.text_field :name%>
-			</p>
-			<label>
-				<%= f.radio_button :status, :draft %>
-				<%= f.label :status, "有効" %>
-			</label>
-			<label>
-				<%= f.radio_button :status, :published %>
-				<%= f.label :status, "無効" %>
-			</label>
-			<%= f.submit %>
-			<% end %>
-		</div>
-		<div>
-		<%= link_to "戻る",admins_genres_path,class: "btn btn-success col-xs-12"%>
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">ジャンル編集画面</h4>
 	</div>
+</div>
+<div class="container">
+	<div>
+		<%= form_for(@genre,url:admins_genre_path, local: true) do |f| %>
+		<%= f.label :ジャンル %>
+		<%= f.text_field :name%>
+		<label>
+			<%= f.radio_button :status, :draft %>
+			<%= f.label :status, "有効" %>
+		</label>
+		<label>
+			<%= f.radio_button :status, :published %>
+			<%= f.label :status, "無効" %>
+		</label>
+		<%= f.submit "変更を保存する", class:"btn-outline-primary btn-sm"%>
+		<% end %>
+		<%= link_to "⇦戻る",admins_genres_path %>
 	</div>
 </div>
