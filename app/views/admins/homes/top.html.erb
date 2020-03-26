@@ -1,5 +1,18 @@
 <h1>管理者画面</h1>
 
 <% @orders.each do |order| %>
+<<<<<<< HEAD
   <% order.products.each do |order_product| %>
+=======
+  <% order.order_products.each do |order_product| %>
+   <% sum += order_product.quantity %>
+  <% end %>
+<% end %>
+<div>本日の注文件数
+	<%= link_to(admins_orders_path) do %>
+	<%= sum  %>
+	<% end %>件
+</div>
+
+>>>>>>> ecfbb394cd2ab23261bc3630ecd033aa1e9d6cbb
 
