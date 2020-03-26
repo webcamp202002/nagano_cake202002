@@ -1,35 +1,55 @@
-<h1>会員詳細画面</h1>
-<div>
-	<div>
-	<p>顧客ID<%= @member.id%></p><div><%= @member.is_withdrow_i18n %>会員</div></div>
+<style>
+.table{
+  width: 100%;
+}
+
+th{
+  width: 30%;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+}
+</style>
+
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">会員詳細画面</h4>
+	</div>
 </div>
-<div>
-	<p>氏名</p>
-	<%= @member.first_name %><%= @member.last_name %>
-</div>
-<div>
-	<p>フリガナ</p>
-	<%= @member.kana_first_name %><%= @member.kana_last_name %>
-</div>
-<div>
-	<p>郵便番号</p>
-	<%= @member.postcode %>
-</div>
-<div>
-	<p>住所</p>
-	<%= @member.address %>
-</div>
-<div>
-	<p>電話番号</p>
-	<%= @member.phone_number %>
-</div>
-<div>
-	<p>メールアドレス</p>
-	<%= @member.email %>
-</div>
-<div>
-	<%= link_to '編集する', edit_admins_member_path(@member) ,class: "btn btn-primary	 col-xs-12" %>
-</div>
-<div>
-	<%= link_to '注文履歴一覧を見る', admins_order_path(@member) ,class: "btn btn-success col-xs-12"%>
+
+<div class="container">
+	<div class="row" style= "width: 80%; margin: 20px auto;">
+		<table>
+			<tr>
+				<th><h5>顧客ID</h5></th>
+				<th><%= @member.id%>
+				<%= @member.is_withdrow_i18n %>会員</th>
+			</tr>
+			<tr>
+				<th><h5>氏名</h5></th>
+				<th><%= @member.first_name %><%= @member.last_name %></th>
+			</tr>
+			<tr>
+				<th><h5>フリガナ</h5></th>
+				<th><%= @member.kana_first_name %><%= @member.kana_last_name %></th>
+			</tr>
+			<tr>
+				<th><h5>郵便番号</h5></th>
+				<th>〒<%= @member.postcode %></th>
+			</tr>
+			<tr>
+				<th><h5>住所</h5></th>
+				<th><%= @member.address %></th>
+			</tr>
+			<tr>
+				<th><h5>電話番号</h5></th>
+				<th><%= @member.phone_number %></th>
+			</tr>
+			<tr>
+				<th><h5>メールアドレス</h5></th>
+				<th><%= @member.email %></th>
+			</tr>
+			<th><%= link_to '編集する', edit_admins_member_path(@member) ,class: "btn btn-primary	 col-xs-12" %>
+			<%= link_to '注文履歴一覧を見る', admins_order_path(@member) ,class: "btn btn-success col-xs-12"%></th>
+		</table>
+	</div>
 </div>

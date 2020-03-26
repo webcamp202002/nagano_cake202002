@@ -1,49 +1,69 @@
-<%= form_for(@member, url:admins_member_path,  local: true) do |f| %>
-<h1>会員編集画面</h1>
-<div>
-	<p>会員ID<%= @member.id %></p>
-	<div>
-		<p>
-			<%= f.label :氏名 %>
-			<%= f.text_field :last_name %>
-			<%= f.text_field :first_name %>
-		</p>
-		<p>
-			<%= f.label :フリガナ %>
-			<%= f.text_field :kana_last_name %>
-			<%= f.text_field :kana_first_name %>
-		</p>
-		<p>
-			<%= f.label :郵便番号 %>
-			<%= f.text_field :postcode %>
-		</p>
-		<p>
-			<%= f.label :住所 %>
-			<%= f.text_field :address %>
-		</p>
-		<p>
-			<%= f.label :電話番号 %>
-			<%= f.text_field :phone_number %>
-		</p>
-		<p>
-			<%= f.label :メールアドレス %>
-			<%= f.text_field :email %>
-		</p>
-		<div>
-			<label>
-				<%= f.radio_button :is_withdrow, :published%>
-				<%= f.label :is_withdrow, "有効" %>
-			</label>
-			<label>
-				<%= f.radio_button :is_withdrow, :draft %>
-				<%= f.label :is_withdrow, "無効" %>
-			</label>
-		</div>
-		 <%= f.submit "登録する", class:"btn btn-primary btn-md" %>
-	</div>
-	<div>
-		<%= link_to "戻る",admins_member_path,class: "btn btn-success col-xs-12"%>
-	</div>
+<style>
+.table{
+  width: 100%;
+}
 
+th{
+  width: 30%;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+}
+</style>
+
+<div class="row" style= "width: 80%; margin: 20px auto;">
+	<div class="form-horizontal">
+		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">会員編集画面</h4>
+	</div>
 </div>
-<% end %>
+
+
+<div class="container">
+	<div class="row" style= "width: 80%; margin: 20px auto;">
+		<table>
+			<%= form_for(@member, url:admins_member_path,  local: true) do |f| %>
+			<tr>
+				<th>会員ID</th>
+				<th><%= @member.id %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :氏名 %></th>
+				<th><%= f.text_field :last_name %></th>
+				<th><%= f.text_field :first_name %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :フリガナ %></th>
+				<th><%= f.text_field :kana_last_name %></th>
+				<th><%= f.text_field :kana_first_name %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :郵便番号 %>(ハイフンなし)</th>
+				<th>〒<%= f.text_field :postcode %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :住所 %></th>
+				<th><%= f.text_field :address, style: "width: 200%;" %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :電話番号 %></th>
+				<th><%= f.text_field :phone_number %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :メールアドレス %></th>
+				<th><%= f.text_field :email %></th>
+			</tr>
+			<tr>
+				<th><%= f.label :会員ステータス %></th>
+				<th><%= f.radio_button :is_withdrow, :published%>
+				<%= f.label :is_withdrow, "有効" %>
+				<%= f.radio_button :is_withdrow, :draft %>
+				<%= f.label :is_withdrow, "退会済み" %></th>
+			</tr>
+			<tr>
+				<td><%= link_to "⇦戻る",admins_member_path %>
+					<%= f.submit "登録する", class:"btn btn-primary btn-md" %>
+				</td>
+			</tr>
+			<% end %>
+	</table>
+</div>
+</div>
