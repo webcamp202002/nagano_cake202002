@@ -1,0 +1,29 @@
+<% if @datas.present? %>
+<% @datas.each do |data| %>
+<%  if @model == 'member' %>
+<table class='table'>
+	<tr>
+		<th>会員名</th>
+	</tr>
+	<tr>
+		<td>
+			<%= data.name %>
+		</td>
+	</tr>
+	<td><%= link_to "詳細へ", data %></td>
+</table>
+<% elsif @model == "product" %>
+	<table class='table'>
+	<tr>
+		<th>商品名</th>
+	</tr>
+	<tr>
+		<td>
+			<%= data.name %>
+		</td>
+		<td><%= link_to "詳細へ", data %></td>
+	</tr>
+</table>
+<% end %>
+<% end %>
+<% end %>
