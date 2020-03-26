@@ -8,8 +8,10 @@
 	</div>
 </div>
 
+
 <div class="container">
-		<div class="form-group">
+	<table  class="table table-bordered ">
+	<div class="form-group">
 			<%= form_with(model:@order,url:members_orders_confirm_path,method: :get,local:true) do |f| %>
 			<%= f.hidden_field :member_id %>
 			<h3>☆支払い方法</h3>
@@ -34,26 +36,27 @@
 				</label>
 			</div>
 
-				<div class="form-group">
-					<label>
-						<%= radio_button_tag(:address_select,:address3,checked: "checked") %>
-						<%= f.label(:address_select, "新しいお届け先", value: "address3") %><br>
+			<div class="form-group">
+				<label>
+					<%= radio_button_tag(:address_select,:address3,checked: "checked") %>
+					<%= f.label(:address_select, "新しいお届け先", value: "address3") %><br>
 
-						<%= f.fields_for :destination do |d| %>
-						<label class="control-label col-xs-2">郵便番号(ハイフンなし)</label>
-						<div>〒<%= d.text_field :postcode, style: "width: 70%;" %></div>
+					<%= f.fields_for :destination do |d| %>
+					<label class="control-label col-xs-2">郵便番号(ハイフンなし)</label>
+					<div>〒<%= d.text_field :postcode, style: "width: 70%;" %></div>
 
 
-						<label class="control-label col-xs-2">住所</label>
-						<div><%= d.text_field :address, style: "width: 200%;" %></div>
+					<label class="control-label col-xs-2">住所</label>
+					<div><%= d.text_field :address, style: "width: 200%;" %></div>
 
-						<label class="control-label col-xs-2">宛名</label><br>
-						<div><%= d.text_field :name, style: "width: 80%;" %></div>
-					</label>
-					<div class="text-center">
-						<%= f.submit "確認画面へ進む",class: "btn btn-primary col-xs-12" %>
-					</div>
-					<% end %>
-					<% end %>
+					<label class="control-label col-xs-2">宛名</label><br>
+					<div><%= d.text_field :name, style: "width: 80%;" %></div>
+				</label>
+				<div class="text-center">
+					<%= f.submit "確認画面へ進む",class: "btn btn-primary col-xs-12" %>
 				</div>
-		</div>
+				<% end %>
+				<% end %>
+			</div>
+	</table>
+</div>
