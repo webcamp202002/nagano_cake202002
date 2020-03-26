@@ -1,9 +1,6 @@
 <h1>管理者画面</h1>
 
 <% @orders.each do |order| %>
-<<<<<<< HEAD
-  <% order.products.each do |order_product| %>
-=======
   <% order.order_products.each do |order_product| %>
    <% sum += order_product.quantity %>
   <% end %>
@@ -14,5 +11,4 @@
 	<% end %>件
 </div>
 
->>>>>>> ecfbb394cd2ab23261bc3630ecd033aa1e9d6cbb
 
