@@ -7,12 +7,13 @@
 
 <%= form_for(@product,url:admins_products_path) do |f| %>
 <% if @product.errors.any? %>
-<h3><%= @product.errors.count %>error occurrence</h3><!--エラーメッセ-->
-<ul>
-	<% @product.errors.full_messages.each do |message| %>
-	<li><%= message %></li>
-	<% end %>
-</ul>
+
+	<h3><%= @product.errors.count %>error occurrence</h3>
+	<ul>
+		<% @product.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
 <% end %>
 
 <div class="container">
