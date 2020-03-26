@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_sign_up_params, if: :devise_controller?
   protect_from_forgery with: :exception
 
-
   private
 
   def after_sign_up_path_for(resource)
