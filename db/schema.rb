@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_03_28_040314) do
     t.string "postcode"
     t.string "address"
     t.boolean "is_withdrow", default: false, null: false
-    t.string "name"
     t.string "total_name"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
