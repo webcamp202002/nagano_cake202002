@@ -9,39 +9,39 @@
 <body>
 
   <header class="navbar-brand-center" style="background-color: #FFAD90;">
-    <div class="container">
-      <div class="navbar-nav ml-auto mr-auto"></div>
-        <em><h2 class="navbar-brand navbar-right">NAGANO CAKE</h2><em>
-        </div>
-        </header>
-        <% if member_signed_in? %>
-        <nav>
-          <ul class="nav-list">
-            <li class="nav-list-item"><p>ようこそ、
-             <%= current_member.last_name %>
-             さん！
-             <li class="nav-list-item"><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
+    <div class="navbar-nav ml-auto mr-auto">
+  <% if member_signed_in? %>
+  <nav>
+    <ul>
+      <h2 class="navbar-brand navbar-right">NAGANO CAKE</h2>
+    </ul>
+    <ul>
+      <li class="nav-list-item logo"></li>
+      <li class="nav-list-item"><p>ようこそ、
+       <%= current_member.last_name %>
+     さん！</p></li>
+     <li class="nav-list-item"><%= link_to 'マイページ', members_member_path(current_member), class: "nav-link disabled" %></li>
 
-             <li class="nav-list-item"><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
+     <li class="nav-list-item"><%= link_to '商品一覧',members_products_path, class: "nav-link disabled" %></li>
 
-             <li class="nav-list-item"><%= link_to 'カート',  members_cart_products_path(current_member), class: "nav-link disabled" %></li>
+     <li class="nav-list-item"><%= link_to 'カート',  members_cart_products_path(current_member), class: "nav-link disabled" %></li>
 
-             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
+     <li class="nav-list-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
 
-             <% else %>
-             <li class="nav-list-item"><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
+     <% else %>
+     <li class="nav-list-item"><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
 
-             <li class="nav-list-item"><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>
+     <li class="nav-list-item"><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>
 
-             <li class="nav-list-item"><%= link_to 'ログイン', new_member_session_path, class: "nav-link disabled" %></li>
-             <% end %>
-           </ul>
-         </nav>
-       </div>
-     </div>
-     <% content_for :content do %>
-     <%= yield %>
+     <li class="nav-list-item"><%= link_to 'ログイン', new_member_session_path, class: "nav-link disabled" %></li>
      <% end %>
-     <%= render template: "layouts/application" %>
-   </body>
-   </html>
+   </ul>
+ </nav>
+</div>
+</header>
+<% content_for :content do %>
+<%= yield %>
+<% end %>
+<%= render template: "layouts/application" %>
+</body>
+</html>

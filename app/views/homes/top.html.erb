@@ -1,8 +1,8 @@
 <div class= "container">
 	<div class= "row">
-		<div lass= "col-md-3">
+		<div lass= "col-md-2">
 			<div class="box18">
-				<p><h4><u>ジャンル検索</u>
+				<p>ジャンル検索</p>
 					<%if @genres.present? %>
 					<% @genres.each do |genre| %>
 					<table>
@@ -19,7 +19,7 @@
 				</end>
 			</div>
 		</div>
-		<div  class= "col-md-9">
+		<div  class= "col-md-12">
 			<div id="theTarget">
 				<div class="image1"></div>
 				<div class="image2"></div>
@@ -31,20 +31,28 @@
 				このサイトは、ケーキ販売のECサイトになります。<br>
 				会員でない方も商品の閲覧はできますが、<br>
 			購入には会員登録が必要になります。</p>
-			<h2>オススメ商品</h2>
-			<table class="table">
-				<%if @products.present? %>
-				<% @products.shuffle.first(4).each do |product| %>
-				<div>
-				<p><%= attachment_image_tag(product, :image, size: "50x50") %></p>
-				<p><%= product.name %></p>
-				<p><%= product.unit_price %></p>
-			    </div>
-				<% end %>
-				<% end %>
-			</table>
-			<%= link_to "もっと見る＞",new_member_session_path %>
-			<%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, method: :post %>
+
 		</div>
+		  <div>
+		  	<h2>オススメ商品</h2>
+			<%if @products.present? %>
+			<% @products.shuffle.first(4).each do |product| %>
+		 
+		    <div class="float-left">
+					<p><%= attachment_image_tag(product, :image, size: "50x50") %></p>
+					<p><%= product.name %></p>
+					<p><%= product.unit_price %></p>
+			</div>
+			<% end %>
+			<% end %>
+	      </div>
+		</div>
+		<div>
+			<%= link_to "もっと見る",new_member_session_path,class: "btn btn-primary col-xs-12" %>
+		</div>
+		<div>
+			<%= link_to '管理者ログイン',new_admin_session_path ,class: "btn btn-success col-xs-12"%>
+		</div>
+		<div>
 	</div>
 </div>
