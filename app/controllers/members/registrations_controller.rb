@@ -10,9 +10,12 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+      @member = current_member
+     # @member.total_name = @member.first_name + @member.last_name
+     @member.update(total_name: @member.first_name + @member.last_name)
+   end
 
   # GET /resource/edit
   # def edit
