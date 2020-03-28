@@ -9,15 +9,15 @@
 <body>
 
 	 <header class="navbar-brand-center" style="background-color: #FFAD90;">
-    <div class="container">
-      <div class="navbar-nav ml-auto mr-auto"></div>
-        <em><h2 class="navbar-brand navbar-right">NAGANO CAKE</h2><em>
+      <div class="navbar-nav ml-auto mr-auto">
         </div>
         </header>
             <!--if文でサインインとアウト時の表示を変更-->
             <% if admin_signed_in? %>
             <nav>
           <ul class="nav-list">
+            <li><h2 class="navbar-brand navbar-right">NAGANO CAKE</h2></li>
+             <li class= "nav-list-item logo"></li>
              <li class="nav-list-item"><%= link_to '商品一覧', admins_products_path, class: "nav-link disabled" %></li>
              <li class="nav-list-item"><%= link_to '会員一覧', admins_members_path, class: "nav-link disabled" %></li>
              <li class="nav-list-item"><%= link_to '注文履歴', admins_orders_path, class: "nav-link disabled" %></li>
