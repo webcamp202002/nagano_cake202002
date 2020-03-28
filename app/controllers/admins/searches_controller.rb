@@ -5,7 +5,6 @@ class Admins::SearchesController < Admins::BaseController
 		@content = params["search"]["content"]
 		@how = params["search"]["how"]
 		@datas = search_for(@how, @model, @content)
-		binding.pry
 	end
 	def search_for(how, model, content)
 		p '---------'
@@ -24,7 +23,7 @@ class Admins::SearchesController < Admins::BaseController
 
 	def match(model, content)
 		if model == 'member'
-			Member.where("lower(SELECT CONCAT_WS(",", lower(first_name), lower(last_name)) like ?","#{content}")
+			Member.where(total_name: content)
 		elsif model == 'product'
 			Product.where(name: content)
 		end
@@ -32,14 +31,14 @@ class Admins::SearchesController < Admins::BaseController
 
 	def forward(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","#{content}%","#{content}%")
+			Member.where("total_name LIKE ?", "#{content}%")
 		elsif model == 'product'
 			Product.where("name LIKE ?", "#{content}%")
 		end
 	end
 	def backward(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","%#{content}","%#{content}")
+			Member.where("total_name LIKE ?", "%#{content}")
 		elsif model == 'product'
 			Product.where("name LIKE ?", "%#{content}")
 		end
@@ -47,7 +46,7 @@ class Admins::SearchesController < Admins::BaseController
 
 	def partical(model, content)
 		if model == 'member'
-			Member.where("lower(members.first_name) like ? OR lower(members.last_name) like ?","%#{content}%","%#{content}%")
+			Member.where("total_name LIKE ?", "%#{content}%")
 		elsif model == 'product'
 			Product.where("name LIKE ?", "%#{content}%")
 		end
