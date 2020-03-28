@@ -33,7 +33,10 @@
 			購入には会員登録が必要になります。</p>
 			<h2>オススメ商品</h2>
 			<table class="table">
+
+
 				<%if @products.present? %>
+
 				<% @products.shuffle.first(4).each do |product| %>
 				<div>
 				<p><%= attachment_image_tag(product, :image, size: "50x50") %></p>
@@ -41,7 +44,9 @@
 				<p><%= product.unit_price %></p>
 			    </div>
 				<% end %>
+
 				<% end %>
+
 			</table>
 			<%= link_to "もっと見る＞",new_member_session_path %>
 			<%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, method: :post %>
