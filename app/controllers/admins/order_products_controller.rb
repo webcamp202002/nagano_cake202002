@@ -1,4 +1,5 @@
 class Admins::OrderProductsController < Admins::BaseController
+	before_action :authenticate_admin!
 	def update
 		@order_product = OrderProduct.find(params[:id])
 		if @order_product.product_status == "wait_create" && order_product_params[:product_status] == "create"

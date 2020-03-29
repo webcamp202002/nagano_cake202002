@@ -1,4 +1,5 @@
 class Members::DestinationsController < Members::BaseController
+	before_action :authenticate_member!
 	def index
 		@destination = Destination.new
 		@destinations = Destination.all
