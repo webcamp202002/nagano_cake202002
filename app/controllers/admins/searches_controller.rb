@@ -1,4 +1,5 @@
 class Admins::SearchesController < Admins::BaseController
+	before_action :authenticate_admin!
 
 	def search
 		@model = params["search"]["model"]

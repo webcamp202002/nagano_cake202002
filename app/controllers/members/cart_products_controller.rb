@@ -1,4 +1,5 @@
 class Members::CartProductsController < Members::BaseController
+	before_action :authenticate_member!
 
 	def index
 		@cart_product = CartProduct.new

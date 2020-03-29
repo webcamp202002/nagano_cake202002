@@ -1,6 +1,4 @@
 class Members::MembersController < Members::BaseController
-
-
 	before_action :authenticate_member!
 
 
