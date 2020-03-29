@@ -1,5 +1,6 @@
-<div class="row" style= "width: 100%; margin: 20px auto;">
-		<div class= "col-md-2">
+<div class= "container">
+	<div class="row" style= "width: 100%; margin: 20px auto;">
+		<div class= "col-md-3">
 			<div class="box18">
 				<h4><u>ジャンル検索</u></h4>
 				<%if @genres.present? %>
@@ -15,18 +16,14 @@
 				</table>
 				<% end %>
 				<% end %>
+			</div>
 		</div>
-	</div>
-</div>
 
+		<div class= "col-md-4 float-left" style="width: 80%; margin: 50px auto;">
+			<%= attachment_image_tag @product, :image, style:"width:100%; height:110%; margin-left:20%;" %>
+		</div>
 
-<div class= "container">
-	<div class="row" style="width: 80%; margin: 50px auto;">
-	<div class= "col-md-7">
-		<%= attachment_image_tag @product, :image, style:"width:80%; height:110%; margin-left:20%;" %>
-	</div>
-
-	<div class= "col-md-5">
+		<div class= "col-md-4"style=" margin-top: 50px;">
 			<table class="table table-condensed">
 				<tr>
 					<th>商品名</th>
@@ -45,12 +42,13 @@
 
 				<tr>
 					<th><%= f.label  :quantity, "個数選択" %>
-					<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]%></th>
-					<%= f.hidden_field :product_id, :value => @product.id%>
-					<th><%= f.submit "カートに入れる", class: "btn btn-primary" %></th>
-				</tr>
-				<% end %>
-			</table>
+						<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]%></th>
+						<%= f.hidden_field :product_id, :value => @product.id%>
+						<th><%= f.submit "カートに入れる", class: "btn btn-primary" %></th>
+					</tr>
+					<% end %>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
