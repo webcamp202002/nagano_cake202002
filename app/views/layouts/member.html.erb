@@ -27,8 +27,15 @@
      <li class="nav-list-item"><%= link_to 'カート',  members_cart_products_path(current_member), class: "nav-link disabled" %></li>
 
      <li class="nav-list-item"><%= link_to 'ログアウト', destroy_member_session_path, method: :delete,class: "nav-link disabled" %></li>
+     </ul>
+ </nav>
 
      <% else %>
+     <nav>
+    <ul>
+      <h2 class="navbar-brand navbar-right">NAGANO CAKE</h2>
+    </ul>
+    <ul>
      <li class="nav-list-item"><%= link_to '商品一覧', members_products_path, class: "nav-link disabled" %></li>
 
      <li class="nav-list-item"><%= link_to '新規登録', new_member_registration_path, class: "nav-link disabled" %></li>
