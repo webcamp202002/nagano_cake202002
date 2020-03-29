@@ -1,37 +1,32 @@
-<div class= "container">
-	<div class= "row">
-		<div lass= "col-md-3">
-			<div class="box18">
-				<p><h4><u>ジャンル検索</u>
-					<%if @genres.present? %>
-					<% @genres.each do |genre| %>
-					<table>
-						<tr>
-							<td>
-								<%= link_to members_products_path(genre_id: genre.id) do %>
-								<%= genre.name %></p></h4>
-								<% end %>
-							</td>
-						</tr>
-					</table>
-					<% end %>
-					<% end %>
-				</end>
-			</div>
+<div class="row" style="width: 100%; margin: 50px auto; margin-left: 80px;">
+	<div class= "col-md-2">
+		<div class="box18">
+			<h4><u>ジャンル検索</u></h4>
+			<%if @genres.present? %>
+			<% @genres.each do |genre| %>
+			<table>
+				<tr>
+					<td>
+						<%= link_to members_products_path(genre_id: genre.id) do %>
+						<h6><%= genre.name %></h6>
+						<% end %>
+					</td>
+				</tr>
+			</table>
+			<% end %>
+			<% end %>
 		</div>
-
-		<div  class= "col-md-9">
-			<div class="row" style= "width: 100%; margin: 20px auto;">
-				<div class="form-horizontal">
-					<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品一覧</h4>
-				</div>
+	</div>
+	<div class="container">
+		<div class="row" style="width: 100%; margin: 50px auto;">
+			<div class="form-horizontal">
+				<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品一覧</h4>
 			</div>
-
 			<%if @products.present? %>
 			<div class="item">
 				<% @products.each do |product| %>
 				<div class="item">
-					<div class="col-xs-3 each_item">
+					<div class="col-md-5 each_item">
 						<%= link_to members_product_path(product) do %>
 						<%= attachment_image_tag(product, :image, size: "300x200") %>
 						<% end %>
@@ -44,5 +39,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>

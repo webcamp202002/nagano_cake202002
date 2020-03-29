@@ -1,50 +1,56 @@
-<div class= "container">
-	<div class= "row">
-		<div lass= "col-md-3">
+<div class="row" style= "width: 100%; margin: 20px auto;">
+		<div class= "col-md-2">
 			<div class="box18">
 				<h4><u>ジャンル検索</u></h4>
-					<%if @genres.present? %>
-					<% @genres.each do |genre| %>
-					<table>
-						<tr>
-							<td>
-								<%= link_to members_products_path(genre.id) do %>
-								<h5><%= genre.name %></h5>
-								<% end %>
-							</td>
-						</tr>
-					</table>
-					<% end %>
-					<% end %>
-				</end>
-			</div>
+				<%if @genres.present? %>
+				<% @genres.each do |genre| %>
+				<table>
+					<tr>
+						<td>
+							<%= link_to members_products_path(genre.id) do %>
+							<h5><%= genre.name %></h5>
+							<% end %>
+						</td>
+					</tr>
+				</table>
+				<% end %>
+				<% end %>
 		</div>
 	</div>
 </div>
 
-<div  class= "col-md-9">
-<div class="container">
-			<div class="row" style="width: 90%; margin: 20px auto;">
-				<div class="col-xs-3" style = "margin-top: 50px">
-					<div class="col-xs-5" style ="margin: 100px 0 100px 0">
-						<%= attachment_image_tag @product, :image, style:"width:50%; bottom: 45px;" %>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div  class= "col-md-4">
-			<h3><%= @product.name %><h3><br>
-				<p><%= @product.introduction%></p>
-				<p>￥
-					<%= (@product.unit_price * 1.1).round %>(税込み)</p>
+<div class= "container">
+	<div class="row" style="width: 80%; margin: 50px auto;">
+	<div class= "col-md-7">
+		<%= attachment_image_tag @product, :image, style:"width:80%; height:110%; margin-left:20%;" %>
+	</div>
 
-					<%= form_with(model:@cart,url: members_cart_products_path,local: true,method: :POST) do |f| %>
+	<div class= "col-md-5">
+			<table class="table table-condensed">
+				<tr>
+					<th>商品名</th>
+					<td><%= @product.name %></td>
+				</tr>
+				<tr>
+					<th>商品説明</th>
+					<td><%= @product.introduction %></td>
+				</tr>
+				<tr>
+					<th>価格</th>
+					<td>￥<%= (@product.unit_price * 1.1).round %>(税込み)</td>
+				</tr>
 
-					<%= f.label  :quantity, "個数選択" %>
-					<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]%>
+				<%= form_with(model:@cart,url: members_cart_products_path,local: true,method: :POST) do |f| %>
+
+				<tr>
+					<th><%= f.label  :quantity, "個数選択" %>
+					<%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10]%></th>
 					<%= f.hidden_field :product_id, :value => @product.id%>
-					<%= f.submit "カートに入れる" %>
-					<% end %>
-				</div>
-			</div>
+					<th><%= f.submit "カートに入れる", class: "btn btn-primary" %></th>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
