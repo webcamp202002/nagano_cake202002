@@ -14,7 +14,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
      super
       @member = current_member
      # @member.total_name = @member.first_name + @member.last_name
-     @member.update(total_name: @member.first_name + @member.last_name)
+     @member.update(total_name: @member.last_name + @member.first_name)
    end
 
   # GET /resource/edit
